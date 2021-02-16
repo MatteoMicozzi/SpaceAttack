@@ -1,7 +1,8 @@
 # SPACE ATTACK!
 
-##### This is a web based clone of the game SPACE INVADERS.
----------------------
+##### This is a web based arcade game like SPACE INVADERS.
+*In my version of the game you'll have 4 main levels. In the first level you'll have one line of aliens to fight and each of them has 1 life each, in the second level you'll have 1 line more of aliens and the new ones will have 2 lives each and so on until the level 4. Every level at the end has a monster to fight and it will have half of the total lives of the aliens that you defeated in that level. Those 4 levels will repeat 3 times with an increased speed, in order to be more challenging and to have at the end 12 levels & 12 monsters to fight.*
+
 #### Stack technologies used:
   - Javascript
   - html
