@@ -30,3 +30,15 @@
 |2nd Monster    |1                |120x120       |15     |
 |3rd Monster    |1                |120x120       |30     |
 |4th Monster    |1                |120x120       |50     |
+|Shuttle lives  |1                |-             |-      |
+|Life drop      |1                |-             |-      |
+
+#### Levels
+
+| Level       | Description                             |
+|-------------|-----------------------------------------|
+| 1           | 1st row of aliens + 1st monster         |
+| 2           | 2nd & 1st rows of aliens + 2nd monster  |
+| 3           | 3rd to 1st rows of aliens + 3rd monster |
+| 4           | 4th to 1st rows of aliens + 4th monster |
+| 5, 6, 7, 8, 9, 10, 11 & 12 | Repeat from level 1 to level 4 two times, with increased speed and aliens-monster lives. |
