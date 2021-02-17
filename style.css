@@ -1,11 +1,29 @@
-.spaceAttack {
-  width: 1000px;
-  height: 500px;
+head, body {
   background-color: black;
+  color: limegreen;
+}
+
+.spaceAttack {
+  width: 1400px;
+  height: 700px;
+  background-color: black;
+  border: 10px solid blue;
 }
 
 .spaceAttack .shuttle {
+  position: relative;
+  top: 640px;
+  left: 20px;
   width: 60px;
   height: 40px;
   background-color: dodgerblue;
+  animation: shuttleRight 1s ease-in;
+}
+@keyframes shuttleRight{
+  0%{left:20px;}
+  100%{left:1320px;}
+}
+@keyframes shuttleLeft{
+  0%{left:1320px;}
+  100%{left:20px;}
 }

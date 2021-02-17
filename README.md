@@ -9,7 +9,7 @@
   - css  
 
 #### Diagram of the game space by px  
-- Space component 1000x500px
+- Space component 1400x700px
 - 20px border
 - 20x20px each square
 ![Diagram_game](./px_diagram_game.png)
