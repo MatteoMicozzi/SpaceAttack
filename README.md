@@ -22,14 +22,14 @@
 |Shields        |3                |120x40        |3 each |
 |Shuttle Laser  |1                |6x6           |-      |
 |Aliens Laser   |1                |6x6           |-      |
-|1st Aliens row |10               |40x40         |1 each |
-|2nd Aliens row |10               |40x40         |2 each |
-|3rd Aliens row |10               |40x40         |3 each |
-|4th Aliens row |10               |40x40         |4 each |
-|1st Monster    |1                |120x120       |5      |
-|2nd Monster    |1                |120x120       |15     |
-|3rd Monster    |1                |120x120       |30     |
-|4th Monster    |1                |120x120       |50     |
+|Aliens Line1   |10               |40x40         |1 each |
+|Aliens Line2   |10               |40x40         |2 each |
+|Aliens Line3   |10               |40x40         |3 each |
+|Aliens Line4   |10               |40x40         |4 each |
+|Monster 1      |1                |120x120       |5      |
+|Monster 2      |1                |120x120       |15     |
+|Monster 3      |1                |120x120       |30     |
+|Monster 4      |1                |120x120       |50     |
 |Shuttle lives  |1                |-             |-      |
 |Life drop      |1                |-             |-      |
 

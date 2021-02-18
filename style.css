@@ -3,21 +3,26 @@ head, body {
   color: limegreen;
 }
 
-.spaceAttack {
+#spaceAttack {
   width: 1400px;
   height: 700px;
   background-color: black;
   border: 10px solid blue;
 }
 
-.spaceAttack .shuttle {
+#shuttle {
   position: relative;
   top: 640px;
-  left: 20px;
+  left: 670px;
   width: 60px;
   height: 40px;
   background-color: dodgerblue;
+}
+.turnRight {
   animation: shuttleRight 1s ease-in;
+}
+.turnLeft {
+  animation: shuttleLeft 1s ease-in;
 }
 @keyframes shuttleRight{
   0%{left:20px;}
@@ -26,4 +31,24 @@ head, body {
 @keyframes shuttleLeft{
   0%{left:1320px;}
   100%{left:20px;}
+}
+
+#shields * {
+  position: relative;
+  left: 120px;
+  width: 120px;
+  height: 40px;
+  background-color: limegreen;
+}
+#shields > #p1 {
+  top: 540px;
+  left: 120px;
+}
+#shields > #p2 {
+  top: 500px;
+  left: 640px;
+}
+#shields > #p3 {
+  top: 460px;
+  left: 1160px;
 }
