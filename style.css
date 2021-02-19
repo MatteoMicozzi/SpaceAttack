@@ -17,19 +17,18 @@ head, body {
   width: 60px;
   height: 40px;
   background-color: dodgerblue;
+  transition-timing-function: ease-in;
 }
 .turnRight {
-  animation: shuttleRight 1s ease-in;
+  animation: shuttleRight 1s;
 }
 .turnLeft {
-  animation: shuttleLeft 1s ease-in;
+  animation: shuttleLeft 1s;
 }
 @keyframes shuttleRight{
-  0%{left:20px;}
   100%{left:1320px;}
 }
 @keyframes shuttleLeft{
-  0%{left:1320px;}
   100%{left:20px;}
 }
 
