@@ -1,14 +1,15 @@
 var spaceAttack = document.getElementById("spaceAttack");
 var shuttle = document.getElementById("shuttle")
+var shuttlePosition
 
 setInterval(function() {
-  let shuttlePosition = window.getComputedStyle(shuttle).getPropertyValue("left");
+  shuttlePosition = window.getComputedStyle(shuttle).getPropertyValue("left");
   shuttle.style.setProperty("left", shuttlePosition);
 },20);
 
 document.addEventListener("keydown", function(event) {
-  console.log(event.keyCode)
   if (event.keyCode == 39) {
+    
     shuttle.classList.add("turnRight");
   } else if (event.keyCode == 37) {
     shuttle.classList.add("turnLeft");
@@ -18,6 +19,7 @@ document.addEventListener("keydown", function(event) {
 
 
 document.addEventListener("keyup", function(event) {
+  console.log(shuttlePosition)
   if (event.keyCode == 37) {
     shuttle.classList.remove("turnLeft");
   }
