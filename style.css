@@ -39,7 +39,7 @@ h1 {
   top: -25px;
   width: 1400px;
   height: 700px;
-  background-image: url("./img/background4.jpg");
+  background-image: url("./img/background.jpg");
   border: 10px solid blue;
 }
 
@@ -50,20 +50,29 @@ h1 {
   width: 60px;
   height: 40px;
   background-image: url("./img/shuttle.tiff");
-  animation-duration: 1s;
 }
-.turnRight {
-  animation: shuttleRight ease-in;
+#afterBurnRx {
+  width: 35px;
+  height: 18px;
+  position: relative;
+  top: 15px;
+  left: 54px;
 }
-.turnLeft {
-  animation: shuttleLeft ease-in;
+#afterBurnLx {
+  width: 35px;
+  height: 18px;
+  position: relative;
+  top: -3px;
+  left: -28px;
 }
-@keyframes shuttleRight{
-  100%{left:1320px;}
+.afterBurnRx {
+  background-image: url("./img/afterBurnRx.tiff");
 }
-@keyframes shuttleLeft{
-  100%{left:20px;}
+.afterBurnLx {
+  background-image: url("./img/afterBurnLx.tiff");
 }
+
+
 
 #shields * {
   position: relative;
