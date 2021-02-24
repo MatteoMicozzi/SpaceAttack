@@ -15,6 +15,19 @@ h1 {
   display: flex;
   justify-content: center;
 }
+
+#spaceAttack {
+  position: relative;
+  top: -25px;
+  width: 1400px;
+  height: 700px;
+  background-image: url("./img/background.jpg");
+  border: 10px solid blue;
+}
+
+#inGameTxt {
+  z-index: 10;
+}
 #livesTxt {
   position: absolute;
   top: 20px;
@@ -34,35 +47,27 @@ h1 {
   right: 20px;
 }
 
-#spaceAttack {
-  position: relative;
-  top: -25px;
-  width: 1400px;
-  height: 700px;
-  background-image: url("./img/background.jpg");
-  border: 10px solid blue;
-}
-
 #shuttle {
-  position: relative;
+  position: absolute;
   top: 640px;
   left: 670px;
   width: 60px;
   height: 40px;
+  z-index: 2;
   background-image: url("./img/shuttle.tiff");
 }
 #afterBurnRx {
   width: 35px;
   height: 18px;
-  position: relative;
+  position: absolute;
   top: 15px;
   left: 54px;
 }
 #afterBurnLx {
   width: 35px;
   height: 18px;
-  position: relative;
-  top: -3px;
+  position: absolute;
+  top: 15px;
   left: -28px;
 }
 .afterBurnRx {
@@ -72,26 +77,36 @@ h1 {
   background-image: url("./img/afterBurnLx.tiff");
 }
 
-
+#shuttleLaser {
+  width: 17px;
+  height: 57px;
+  position: absolute;
+  left: 1px;
+  top: 600px;
+  z-index: 1;
+}
+.shuttleLaser {
+  background-image: url("./img/blueLaser.tiff")
+}
 
 #shields * {
-  position: relative;
+  position: absolute;
   left: 120px;
   width: 120px;
   height: 40px;
 }
 #shields > #p1 {
-  top: 540px;
+  top: 580px;
   left: 120px;
   background-image: url("./img/p1.tiff");
 }
 #shields > #p2 {
-  top: 500px;
+  top: 580px;
   left: 640px;
   background-image: url("./img/p2.tiff");
 }
 #shields > #p3 {
-  top: 460px;
+  top: 580px;
   left: 1160px;
   background-image: url("./img/p3.tiff");
 }
