@@ -11,6 +11,9 @@ var keyRight = 'up';
 var keyLeft = 'up';
 var keySpacebar = 'up';
 
+// var lives = parseInt(document.getElementById("lives").innerHTML)
+// document.getElementById("lives").innerHTML =  lives + 1
+
 setInterval(function() {
   shuttlePosition = parseInt(window.getComputedStyle(shuttle).getPropertyValue("left"));
   shuttleLaserPositionX = shuttlePosition + 21;
@@ -26,6 +29,8 @@ setInterval(function() {
     shuttleLaser.style.setProperty("top", (shuttleLaserPositionY - 10) + "px");
   } else {
     keySpacebar = 'up';
+  };
+  if (keySpacebar == 'up') {
     shuttleLaser.style.setProperty("top", "600px");
     shuttleLaser.classList.remove("shuttleLaser");
   };

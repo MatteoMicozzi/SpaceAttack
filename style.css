@@ -5,27 +5,37 @@ body {
   font-size: 20px;
   overflow: hidden;
 }
+#menu {
+  position: absolute;
+  width: 1400px;
+  height: 100px;
+  border: 10px solid blue;
+  background-color: black;
+  z-index: 5;
+}
 h1 {
-  display: flex;
-  justify-content: center;
+  position: absolute;
+  top: -15px;
+  width: 100%;
+  text-align: center;
 }
 #startPause {
-  position: relative;
-  top: -15px;
-  display: flex;
-  justify-content: center;
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  text-align: center;
 }
 
 #spaceAttack {
-  position: relative;
-  top: -25px;
+  position: absolute;
+  top: 115px;
   width: 1400px;
   height: 700px;
   background-image: url("./img/background.jpg");
   border: 10px solid blue;
 }
 
-#inGameTxt {
+#inGameTxt * {
   z-index: 10;
 }
 #livesTxt {
@@ -52,7 +62,7 @@ h1 {
   top: 640px;
   left: 670px;
   width: 60px;
-  height: 40px;
+  height: 71px;
   z-index: 2;
   background-image: url("./img/shuttle.tiff");
 }
@@ -76,7 +86,6 @@ h1 {
 .afterBurnLx {
   background-image: url("./img/afterBurnLx.tiff");
 }
-
 #shuttleLaser {
   width: 17px;
   height: 57px;
@@ -91,22 +100,80 @@ h1 {
 
 #shields * {
   position: absolute;
-  left: 120px;
   width: 120px;
   height: 40px;
+  z-index: 2;
 }
-#shields > #p1 {
+#shields > #s1 {
   top: 580px;
   left: 120px;
   background-image: url("./img/p1.tiff");
 }
-#shields > #p2 {
+#shields > #s2 {
   top: 580px;
   left: 640px;
   background-image: url("./img/p2.tiff");
 }
-#shields > #p3 {
+#shields > #s3 {
   top: 580px;
   left: 1160px;
   background-image: url("./img/p3.tiff");
+}
+
+#aliens {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 960px;
+  height: 280px;
+}
+#line1, #line2 {
+  position: absolute;
+  width: 60px;
+  height: 140px;
+  background-image: url("./img/alienShip.tiff");
+}
+#line2 {
+  top: 140px;
+}
+#p1, #p2, #p3, #p4, #p5, #p6, #p7, #p8, #p9, #p10 {
+  position: absolute;
+  z-index: 2;
+}
+#p2 {
+  left: 100px;
+}
+#p3 {
+  left: 200px;
+}
+#p4 {
+  left: 300px;
+}
+#p5 {
+  left: 400px;
+}
+#p6 {
+  left: 500px;
+}
+#p7 {
+  left: 600px;
+}
+#p8 {
+  left: 700px;
+}
+#p9 {
+  left: 800px;
+}
+#p10 {
+  left: 900px;
+}
+
+
+#topCover {
+  position: absolute;
+  width: 1400px;
+  height: 40px;
+  background-color: black;
+  top: -20px;
+  z-index: 4;
 }
