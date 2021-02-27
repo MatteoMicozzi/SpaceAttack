@@ -87,15 +87,14 @@ h1 {
   background-image: url("./img/afterBurnLx.tiff");
 }
 #shuttleLaser {
+  position: absolute;
   width: 17px;
   height: 57px;
-  position: absolute;
   left: 1px;
-  top: 600px;
   z-index: 1;
 }
 .shuttleLaser {
-  background-image: url("./img/blueLaser.tiff")
+  background-image: url("./img/blueLaser.tiff");
 }
 
 #shields * {
@@ -167,7 +166,17 @@ h1 {
 #p10 {
   left: 900px;
 }
-
+#aliensLaser {
+  position: absolute;
+  width: 17px;
+  height: 57px;
+  left: 1px;
+  top: 1px;
+  z-index: 1;
+}
+.aliensLaser {
+  background-image: url("./img/redLaser.tiff");
+}
 
 #topCover {
   position: absolute;

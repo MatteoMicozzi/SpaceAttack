@@ -4,15 +4,19 @@ var afterBurnRx = document.getElementById("afterBurnRx");
 var afterBurnLx = document.getElementById("afterBurnLx");
 var shuttleLaser = document.getElementById("shuttleLaser");
 var aliens = document.getElementById("aliens");
+var aliensLaser = document.getElementById("aliensLaser");
 var shuttlePosition;
 var shuttleLaserPositionX;
 var shuttleLaserPositionY;
 var aliensPositionX;
 var aliensLaserPositionX;
+var aliensLaserPositionY;
 var keyRight = 'up';
 var keyLeft = 'up';
 var keySpacebar = 'up';
 var aliensDirection = 'right';
+var aliensLaserStatus = 'waiting';
+var aliensLaserTiming = 0;
 
 // var lives = parseInt(document.getElementById("lives").innerHTML)
 // document.getElementById("lives").innerHTML =  lives + 1
@@ -22,6 +26,9 @@ setInterval(function() {
   shuttleLaserPositionX = shuttlePosition + 21;
   shuttleLaserPositionY = parseInt(window.getComputedStyle(shuttleLaser).getPropertyValue("top"));
   aliensPositionX = parseInt(window.getComputedStyle(aliens).getPropertyValue("left"));
+  aliensLaserPositionX = aliensPositionX + (Math.floor(Math.random() * 10) * 100) + 22;
+  aliensLaserPositionY = parseInt(window.getComputedStyle(aliensLaser).getPropertyValue("top"));
+
 
   if (keyRight == 'down' && shuttlePosition <= 1320) {
     shuttle.style.setProperty("left", (shuttlePosition + 4) + "px");
@@ -29,6 +36,8 @@ setInterval(function() {
   if (keyLeft == 'down' && shuttlePosition >= 20) {
     shuttle.style.setProperty("left", (shuttlePosition - 4) + "px");
   };
+
+
   if (keySpacebar == 'down' && shuttleLaserPositionY >= 0) {
     shuttleLaser.style.setProperty("top", (shuttleLaserPositionY - 10) + "px");
   } else {
@@ -38,6 +47,8 @@ setInterval(function() {
     shuttleLaser.style.setProperty("top", "600px");
     shuttleLaser.classList.remove("shuttleLaser");
   };
+
+
   if (aliensDirection == 'right' && aliensPositionX <= 420) {
     aliens.style.setProperty("left", (aliensPositionX + 1) + "px");
   } else {
@@ -48,6 +59,22 @@ setInterval(function() {
   } else {
     aliensDirection = 'right';
   };
+
+  if (aliensLaserTiming <= 250) {
+    aliensLaserTiming += 5;
+  } else if (aliensLaserTiming > 250 && aliensLaserStatus == 'waiting') {
+    aliensLaserStatus = 'firing';
+    aliensLaser.style.setProperty("left", aliensLaserPositionX + "px");
+    aliensLaser.style.setProperty("top", "140px");
+    aliensLaser.classList.add("aliensLaser");
+  } else if (aliensLaserStatus == 'firing' && aliensLaserPositionY < 640) {
+    aliensLaser.style.setProperty("top", (aliensLaserPositionY + 7) + "px");
+  } else if (aliensLaserPositionY >= 640) {
+    aliensLaserTiming = 0;
+    aliensLaserStatus = 'waiting';
+    aliensLaser.classList.remove("aliensLaser");
+  }
+
 },5);
 
 document.addEventListener("keydown", function(event) {
