@@ -18,6 +18,22 @@ var aliensDirection = 'right';
 var aliensLaserStatus = 'waiting';
 var aliensLaserTiming = 0;
 
+var user = {
+  lives     : 6,
+  level     : 1,
+  score     : 0,
+  shields_p1: 3,
+  shields_p2: 3,
+  shields_p3: 3
+};
+
+var inGame = {
+  aliensLine2 : {p1:true, p2:true, p3:true, p4:true, p5:true, p6:true, p7:true, p8:true, p9:true, p10:true},
+  aliensLine1 : {p1:true, p2:true, p3:true, p4:true, p5:true, p6:true, p7:true, p8:true, p9:true, p10:true},
+  monsterLives: 0
+}
+
+
 // var lives = parseInt(document.getElementById("lives").innerHTML)
 // document.getElementById("lives").innerHTML =  lives + 1
 
@@ -26,7 +42,7 @@ setInterval(function() {
   shuttleLaserPositionX = shuttlePosition + 21;
   shuttleLaserPositionY = parseInt(window.getComputedStyle(shuttleLaser).getPropertyValue("top"));
   aliensPositionX = parseInt(window.getComputedStyle(aliens).getPropertyValue("left"));
-  aliensLaserPositionX = aliensPositionX + (Math.floor(Math.random() * 10) * 100) + 22;
+  aliensLaserPositionX = aliensPositionX + 22;
   aliensLaserPositionY = parseInt(window.getComputedStyle(aliensLaser).getPropertyValue("top"));
 
 
@@ -60,12 +76,12 @@ setInterval(function() {
     aliensDirection = 'right';
   };
 
-  if (aliensLaserTiming <= 250) {
+  if (aliensLaserTiming <= 1000) {
     aliensLaserTiming += 5;
-  } else if (aliensLaserTiming > 250 && aliensLaserStatus == 'waiting') {
+  } else if (aliensLaserTiming > 1000 && aliensLaserStatus == 'waiting') {
     aliensLaserStatus = 'firing';
-    aliensLaser.style.setProperty("left", aliensLaserPositionX + "px");
-    aliensLaser.style.setProperty("top", "140px");
+    aliensLaser.style.setProperty("left", (aliensLaserPositionX + (Math.floor(Math.random() * 10) * 100)) + "px");
+    aliensLaser.style.setProperty("top", ((Math.floor(Math.random() * 2) * 140) + 140) + "px");
     aliensLaser.classList.add("aliensLaser");
   } else if (aliensLaserStatus == 'firing' && aliensLaserPositionY < 640) {
     aliensLaser.style.setProperty("top", (aliensLaserPositionY + 7) + "px");
