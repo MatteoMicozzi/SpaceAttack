@@ -24,6 +24,7 @@ h1 {
   top: 40px;
   width: 100%;
   text-align: center;
+  cursor: pointer;
 }
 
 #spaceAttack {
@@ -101,20 +102,18 @@ h1 {
   position: absolute;
   width: 120px;
   height: 40px;
+  top: 580px;
   z-index: 2;
 }
 #shields > #s1 {
-  top: 580px;
   left: 120px;
   background-image: url("./img/p1.tiff");
 }
 #shields > #s2 {
-  top: 580px;
   left: 640px;
   background-image: url("./img/p2.tiff");
 }
 #shields > #s3 {
-  top: 580px;
   left: 1160px;
   background-image: url("./img/p3.tiff");
 }
@@ -122,7 +121,7 @@ h1 {
 #aliens {
   position: absolute;
   top: 20px;
-  left: 20px;
+  left: 220px;
   width: 960px;
   height: 280px;
 }
