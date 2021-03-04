@@ -13,12 +13,14 @@ var aliensLogic;
 var aliensLaserPrefireLogic;
 
 var input = {
-  gameStatus        : 'inPause',
-  rightKey          : 'up',
-  leftKey           : 'up',
-  shuttleLaserStatus: 'off',
-  aliensDirection   : 'right',
-  aliensLaserStatus : 'off'
+  gameStatus         : 'inPause',
+  rightKey           : 'up',
+  leftKey            : 'up',
+  shuttleLaserStatus : 'off',
+  shuttleLaserStatus2: 'before',
+  aliensDirection    : 'right',
+  aliensLaserStatus  : 'off',
+  aliensLaserStatus2 : 'before'
 }
 
 var position = {
@@ -65,6 +67,7 @@ function aliensFireOff() {
   input.aliensLaserStatus = 'off';
   aliensLaser.classList.remove("aliensLaser");
   aliensLaser.style.setProperty("top", "1px");
+  input.aliensLaserStatus2 = 'before';
 };
 
 function shuttleFireOn() {
@@ -121,12 +124,25 @@ function startResume() {
       input.aliensDirection = 'right';
     };
 
-  if (input.aliensLaserStatus == 'on') {
-    aliensLaser.style.setProperty("top", (position.aliensLaserAxisY + 7) + "px");
-  };
-  if (position.aliensLaserAxisY >= 640) {
-    aliensFireOff();
-  };
+    if (input.aliensLaserStatus == 'on') {
+      aliensLaser.style.setProperty("top", (position.aliensLaserAxisY + 7) + "px");
+    };
+
+    if (position.aliensLaserAxisY > 540 && input.aliensLaserStatus2 == 'before') {
+      if (position.aliensLaserAxisX < 232 && position.aliensLaserAxisX > 112) {
+        aliensFireOff();
+      } else if (position.aliensLaserAxisX < 752 && position.aliensLaserAxisX > 632) {
+        aliensFireOff();
+      } else if (position.aliensLaserAxisX < 1272 && position.aliensLaserAxisX > 1152) {
+        aliensFireOff();
+      } else {
+        input.aliensLaserStatus2 = 'after';
+      }
+    };
+
+    if (position.aliensLaserAxisY >= 640) {
+      aliensFireOff();
+    };
   }, 5);
 
   ///////////////////////////////////////////////////////////////////////////////////////
