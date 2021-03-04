@@ -5,17 +5,20 @@ var afterBurnLx = document.getElementById("afterBurnLx");
 var shuttleLaser = document.getElementById("shuttleLaser");
 var aliens = document.getElementById("aliens");
 var aliensLaser = document.getElementById("aliensLaser");
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 var shuttleLogic;
 var aliensLogic;
+var aliensLaserPrefireLogic;
 
 var input = {
   gameStatus        : 'inPause',
   rightKey          : 'up',
   leftKey           : 'up',
-  shuttleLaserStatus: 'waiting',
+  shuttleLaserStatus: 'off',
   aliensDirection   : 'right',
-  aliensLaserStatus : 'waiting',
-  aliensLaserTiming : 0
+  aliensLaserStatus : 'off'
 }
 
 var position = {
@@ -42,9 +45,42 @@ var inGame = {
   monsterLives: 0
 };
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // var lives = parseInt(document.getElementById("lives").innerHTML)
 // document.getElementById("lives").innerHTML =  lives + 1
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function aliensFireOn() {
+  position.aliensLaserAxisX = position.aliensAxisX + 22 + (Math.floor(Math.random() * 10) * 100);
+  aliensLaser.style.setProperty("left", position.aliensLaserAxisX + "px");
+  aliensLaser.style.setProperty("top", ((Math.floor(Math.random() * 2) * 140) + 140) + "px");
+  aliensLaser.classList.add("aliensLaser");
+  input.aliensLaserStatus = 'on';
+};
+
+function aliensFireOff() {
+  input.aliensLaserTiming = 0;
+  input.aliensLaserStatus = 'off';
+  aliensLaser.classList.remove("aliensLaser");
+  aliensLaser.style.setProperty("top", "1px");
+};
+
+function shuttleFireOn() {
+  if (input.shuttleLaserStatus == 'off') {
+    shuttleLaser.style.setProperty("left", position.shuttleLaserAxisX + "px");
+    shuttleLaser.classList.add("shuttleLaser");
+    input.shuttleLaserStatus = 'on';
+  };
+};
+
+function shuttleFireOff() {
+  shuttleLaser.style.setProperty("top", "600px");
+  shuttleLaser.classList.remove("shuttleLaser");
+  input.shuttleLaserStatus = 'off'
+};
+
 function startResume() {
 
   shuttleLogic = setInterval(function() {
@@ -59,16 +95,16 @@ function startResume() {
       shuttle.style.setProperty("left", (position.shuttleAxisX - 4) + "px");
     };
 
-    if (input.shuttleLaserStatus == 'firing' && position.shuttleLaserAxisY >= 0) {
+
+    if (input.shuttleLaserStatus == 'on') {
       shuttleLaser.style.setProperty("top", (position.shuttleLaserAxisY - 10) + "px");
-    } else {
-      input.shuttleLaserStatus = 'waiting';
     };
-    if (input.shuttleLaserStatus == 'waiting') {
-      shuttleLaser.style.setProperty("top", "600px");
-      shuttleLaser.classList.remove("shuttleLaser");
+    if (position.shuttleLaserAxisY <= 0) {
+      shuttleFireOff();
     };
   }, 5);
+
+  /////////////////////////////////////////////////////////////////////////////////////
 
   aliensLogic = setInterval(function() {
     position.aliensAxisX = parseInt(window.getComputedStyle(aliens).getPropertyValue("left"));
@@ -85,34 +121,30 @@ function startResume() {
       input.aliensDirection = 'right';
     };
 
-    if (input.aliensLaserTiming < 1000) {
-      input.aliensLaserTiming += 5;
-    } else if (input.aliensLaserStatus == 'waiting') {
-      input.aliensLaserStatus = 'preFire';
-    }
-    if (input.aliensLaserStatus == 'preFire') {
-      position.aliensLaserAxisX = position.aliensAxisX + 22 + (Math.floor(Math.random() * 10) * 100);
-      aliensLaser.style.setProperty("left", position.aliensLaserAxisX + "px");
-      aliensLaser.style.setProperty("top", ((Math.floor(Math.random() * 2) * 140) + 140) + "px");
-      aliensLaser.classList.add("aliensLaser");
-      input.aliensLaserStatus = 'firing';
-    } else if (input.aliensLaserStatus == 'firing') {
-      aliensLaser.style.setProperty("top", (position.aliensLaserAxisY + 7) + "px");
-    };
-    if (position.aliensLaserAxisY >= 640) {
-      input.aliensLaserTiming = 0;
-      input.aliensLaserStatus = 'waiting';
-      aliensLaser.classList.remove("aliensLaser");
-      aliensLaser.style.setProperty("top", "1px");
-    };
-    
+  if (input.aliensLaserStatus == 'on') {
+    aliensLaser.style.setProperty("top", (position.aliensLaserAxisY + 7) + "px");
+  };
+  if (position.aliensLaserAxisY >= 640) {
+    aliensFireOff();
+  };
   }, 5);
 
+  ///////////////////////////////////////////////////////////////////////////////////////
+
+  aliensLaserPrefireLogic = setInterval(function() {
+    if (input.aliensLaserStatus == 'off') {
+      aliensFireOn();
+    };
+  }, 1000);
+
 };
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function pause() {
   clearInterval(shuttleLogic);
   clearInterval(aliensLogic);
+  clearInterval(aliensLaserPrefireLogic);
 }
 
 function onPlayPause() {
@@ -131,6 +163,8 @@ document.getElementById("startPause").addEventListener("click", function() {
   onPlayPause();
 });
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 document.addEventListener("keydown", function(event) {
   if (event.keyCode == 39) {
     input.rightKey = 'down';
@@ -139,11 +173,7 @@ document.addEventListener("keydown", function(event) {
     input.leftKey = 'down';
     afterBurnRx.classList.add("afterBurnRx");
   } else if (event.keyCode == 32) {
-    if (input.shuttleLaserStatus == 'waiting') {
-      input.shuttleLaserStatus = 'firing';
-      shuttleLaser.style.setProperty("left", position.shuttleLaserAxisX + "px");
-      shuttleLaser.classList.add("shuttleLaser");
-    };
+    shuttleFireOn();
   } else if (event.keyCode == 80) {
     onPlayPause();
   };
