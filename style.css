@@ -91,31 +91,43 @@ h1 {
   position: absolute;
   width: 17px;
   height: 57px;
-  left: 1px;
+  top: 600px;
+  left: 692px;
   z-index: 1;
 }
 .shuttleLaser {
   background-image: url("./img/blueLaser.tiff");
 }
 
-#shields * {
+#shields > #s1 {
+  position: absolute;
+  top: 580px;
+  left: 120px;
+}
+#shields > #s2 {
+  position: absolute;
+  top: 580px;
+  left: 640px;
+}
+#shields > #s3 {
+  position: absolute;
+  top: 580px;
+  left: 1160px;
+}
+#s1p1, #s1p2, #s1p3, #s2p1, #s2p2, #s2p3, #s3p1, #s3p2, #s3p3 {
   position: absolute;
   width: 120px;
   height: 40px;
-  top: 580px;
   z-index: 2;
 }
-#shields > #s1 {
-  left: 120px;
-  background-image: url("./img/p1.tiff");
+.shieldP1 {
+  background-image: url("./img/sp1.tiff");
 }
-#shields > #s2 {
-  left: 640px;
-  background-image: url("./img/p2.tiff");
+.shieldP2 {
+  background-image: url("./img/sp2.tiff");
 }
-#shields > #s3 {
-  left: 1160px;
-  background-image: url("./img/p3.tiff");
+.shieldP3 {
+  background-image: url("./img/sp3.tiff");
 }
 
 #aliens {
