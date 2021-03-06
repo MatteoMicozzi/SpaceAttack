@@ -11,7 +11,7 @@ body {
   height: 100px;
   border: 10px solid blue;
   background-color: black;
-  z-index: 5;
+  z-index: 10;
 }
 h1 {
   position: absolute;
@@ -36,26 +36,55 @@ h1 {
   border: 10px solid blue;
 }
 
-#inGameTxt * {
-  z-index: 10;
+#inGameTxt {
+  position: absolute;
+  width: 100%;
+  top: -40px;
+  z-index: 9;
+}
+.inGameTxt {
+  animation: inGameTxt 8s ease-out;
+  animation-fill-mode: forwards;
+}
+@keyframes inGameTxt {
+  0%{top: -40px;}
+  95%{top: -40px;}
+  100%{top: 20px;}
 }
 #livesTxt {
   position: absolute;
-  top: 20px;
   left: 20px;
 }
 #levelTxt {
   position: absolute;
   width: 100%;
   text-align: center;
-  top: 20px;
 }
 #scoreTxt {
   position: absolute;
   width: 100%;
   text-align: right;
-  top: 20px;
   right: 20px;
+}
+
+#levelAtStart {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: transparent;
+  font-size: 100px;
+}
+.level {
+  animation: level 2s ease;
+}
+@keyframes level {
+  0%{color: transparent;}
+  20%{color: limegreen;}
+  80%{color: limegreen;}
+  100%{color: transparent;}
 }
 
 #shuttle {
@@ -64,8 +93,7 @@ h1 {
   left: 670px;
   width: 60px;
   height: 71px;
-  z-index: 2;
-  background-image: url("./img/shuttle.tiff");
+  z-index: 3;
 }
 #afterBurnRx {
   width: 35px;
@@ -80,6 +108,15 @@ h1 {
   position: absolute;
   top: 15px;
   left: -28px;
+}
+.shuttle {
+  background-image: url("./img/shuttle.tiff");
+  animation: shuttle 4s ease-out;
+}
+@keyframes shuttle {
+  0%{top: 740px;}
+  70%{top: 740px;}
+  100%{top: 640px;}
 }
 .afterBurnRx {
   background-image: url("./img/afterBurnRx.tiff");
@@ -122,13 +159,22 @@ h1 {
 }
 .shieldP1 {
   background-image: url("./img/sp1.tiff");
+  animation: shield 2s ease-out;
 }
 .shieldP2 {
   background-image: url("./img/sp2.tiff");
+  animation: shield 3s ease-out;
 }
 .shieldP3 {
   background-image: url("./img/sp3.tiff");
+  animation: shield 2.5s ease-out;
 }
+@keyframes shield {
+  0%{top: 160px;}
+  70%{top: 160px;}
+  100%{top: 0px;}
+}
+
 
 #aliens {
   position: absolute;
@@ -139,17 +185,20 @@ h1 {
 }
 #line1, #line2 {
   position: absolute;
-  width: 60px;
-  height: 140px;
-  background-image: url("./img/alienShip.tiff");
 }
 #line1 {
   top: 140px;
 }
 #p1, #p2, #p3, #p4, #p5, #p6, #p7, #p8, #p9, #p10 {
   position: absolute;
+  width: 60px;
+  height: 140px;
+  background-image: url("./img/alienShip.tiff");
   z-index: 2;
 }
+/* .pIndex {
+  background-image: url("./img/alienShip.tiff");
+} */
 #p2 {
   left: 100px;
 }
@@ -195,5 +244,13 @@ h1 {
   height: 40px;
   background-color: black;
   top: -20px;
+  z-index: 4;
+}
+#bottomCover {
+  position: absolute;
+  width: 1500px;
+  height: 200px;
+  background-color: black;
+  top: 835px;
   z-index: 4;
 }

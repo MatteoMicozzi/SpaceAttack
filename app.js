@@ -1,4 +1,6 @@
 var spaceAttack = document.getElementById("spaceAttack");
+var levelText = document.getElementById("levelAtStart");
+var inGameTxt = document.getElementById("inGameTxt");
 var shuttle = document.getElementById("shuttle");
 var afterBurnRx = document.getElementById("afterBurnRx");
 var afterBurnLx = document.getElementById("afterBurnLx");
@@ -14,22 +16,26 @@ var shield2P3 = document.getElementById("s2p3");
 var shield3P1 = document.getElementById("s3p1");
 var shield3P2 = document.getElementById("s3p2");
 var shield3P3 = document.getElementById("s3p3");
+// var line1 = document.querySelectorAll("#line1 *");
+// var line2 = document.querySelectorAll("#line2 *");
+// line1[9].classList.add("pIndex");
+// line2[0].classList.add("pIndex");
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var shuttleLogic;
 var aliensLogic;
 var aliensLaserPrefireLogic;
 
 var input = {
-  gameStatus         : 'inPause',
-  rightKey           : 'up',
-  leftKey            : 'up',
-  shuttleLaserStatus : 'off',
-  shuttleLaserStatus2: 'before',
-  aliensDirection    : 'right',
-  aliensLaserStatus  : 'off',
-  aliensLaserStatus2 : 'before'
+  gameStatus               : 'inPause',
+  rightKey                 : 'up',
+  leftKey                  : 'up',
+  shuttleLaserStatus       : 'none',
+  shuttleLaserFisicalStatus: 'start',
+  aliensDirection          : 'right',
+  aliensLaserStatus        : 'none',
+  aliensLaserFisicalStatus : 'start'
 }
 
 var position = {
@@ -56,15 +62,16 @@ var inGame = {
   shield3     : {p1:true, p2:true, p3:true},
   aliensLine2 : {p1:true, p2:true, p3:true, p4:true, p5:true, p6:true, p7:true, p8:true, p9:true, p10:true},
   aliensLine1 : {p1:true, p2:true, p3:true, p4:true, p5:true, p6:true, p7:true, p8:true, p9:true, p10:true},
-  monsterLives: 0
+  monsterLives: 0,
+  isIt_       : false
 };
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // var lives = parseInt(document.getElementById("lives").innerHTML)
 // document.getElementById("lives").innerHTML =  lives + 1
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function aliensFireOn() {
   position.aliensLaserAxisX = position.aliensAxisX + 22 + (Math.floor(Math.random() * 10) * 100);
@@ -75,11 +82,10 @@ function aliensFireOn() {
 };
 
 function aliensFireOff() {
-  input.aliensLaserTiming = 0;
   input.aliensLaserStatus = 'off';
   aliensLaser.classList.remove("aliensLaser");
   aliensLaser.style.setProperty("top", "1px");
-  input.aliensLaserStatus2 = 'before';
+  input.aliensLaserFisicalStatus = 'start';
 };
 
 function shuttleFireOn() {
@@ -94,7 +100,7 @@ function shuttleFireOff() {
   shuttleLaser.style.setProperty("top", "600px");
   shuttleLaser.classList.remove("shuttleLaser");
   input.shuttleLaserStatus = 'off';
-  input.shuttleLaserStatus2 = 'before';
+  input.shuttleLaserFisicalStatus = 'start';
 };
 
 function shieldsActivation() {
@@ -153,7 +159,7 @@ function aliensLaserOnShields() {
       inGame.shield1.p3 = false;
     };
   } else {
-    input.aliensLaserStatus2 = 'after';
+    input.aliensLaserFisicalStatus = 'afterShields';
   };
 };
 
@@ -201,13 +207,27 @@ function shuttleLaserOnShields() {
       inGame.shield1.p3 = false;
     };
   } else {
-    input.shuttleLaserStatus2 = 'after';
+    input.shuttleLaserFisicalStatus = 'afterShields';
   };
 };
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 function startResume() {
 
-  shieldsActivation();
+  if (inGame.isIt_) {
+    shieldsActivation();
+  } else {
+    shieldsActivation();
+    levelText.classList.add("level");
+    shuttle.classList.add("shuttle");
+    inGameTxt.classList.add("inGameTxt");
+    setTimeout(function() {
+      input.aliensLaserStatus = 'off';
+      input.shuttleLaserStatus = 'off';
+    }, 7000);
+    inGame.isIt_ = true;
+  };
 
   shuttleLogic = setInterval(function() {
     position.shuttleAxisX = parseInt(window.getComputedStyle(shuttle).getPropertyValue("left"));
@@ -226,7 +246,7 @@ function startResume() {
       shuttleLaser.style.setProperty("top", (position.shuttleLaserAxisY - 10) + "px");
     };
 
-    if (position.shuttleLaserAxisY < 600 && input.shuttleLaserStatus2 == 'before') {
+    if (position.shuttleLaserAxisY < 600 && input.shuttleLaserFisicalStatus == 'start') {
       shuttleLaserOnShields();
     };
 
@@ -256,7 +276,7 @@ function startResume() {
       aliensLaser.style.setProperty("top", (position.aliensLaserAxisY + 7) + "px");
     };
 
-    if (position.aliensLaserAxisY > 540 && input.aliensLaserStatus2 == 'before') {
+    if (position.aliensLaserAxisY > 540 && input.aliensLaserFisicalStatus == 'start') {
       aliensLaserOnShields();
     };
 
