@@ -136,22 +136,22 @@ h1 {
   background-image: url("./img/blueLaser.tiff");
 }
 
-#shields > #s1 {
+#shields > #shield1 {
   position: absolute;
   top: 580px;
   left: 120px;
 }
-#shields > #s2 {
+#shields > #shield2 {
   position: absolute;
   top: 580px;
   left: 640px;
 }
-#shields > #s3 {
+#shields > #shield3 {
   position: absolute;
   top: 580px;
   left: 1160px;
 }
-#s1p1, #s1p2, #s1p3, #s2p1, #s2p2, #s2p3, #s3p1, #s3p2, #s3p3 {
+#s1Part1, #s1Part2, #s1Part3, #s2Part1, #s2Part2, #s2Part3, #s3Part1, #s3Part2, #s3Part3 {
   position: absolute;
   width: 120px;
   height: 40px;
@@ -189,41 +189,41 @@ h1 {
 #line1 {
   top: 140px;
 }
-#p1, #p2, #p3, #p4, #p5, #p6, #p7, #p8, #p9, #p10 {
+#part1, #part2, #part3, #part4, #part5, #part6, #part7, #part8, #part9, #part10 {
   position: absolute;
   width: 60px;
   height: 140px;
   background-image: url("./img/alienShip.tiff");
   z-index: 2;
 }
-/* .pIndex {
+/* .alienShip {
   background-image: url("./img/alienShip.tiff");
 } */
-#p2 {
+#part2 {
   left: 100px;
 }
-#p3 {
+#part3 {
   left: 200px;
 }
-#p4 {
+#part4 {
   left: 300px;
 }
-#p5 {
+#part5 {
   left: 400px;
 }
-#p6 {
+#part6 {
   left: 500px;
 }
-#p7 {
+#part7 {
   left: 600px;
 }
-#p8 {
+#part8 {
   left: 700px;
 }
-#p9 {
+#part9 {
   left: 800px;
 }
-#p10 {
+#part10 {
   left: 900px;
 }
 #aliensLaser {
