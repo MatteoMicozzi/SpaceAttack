@@ -7,19 +7,11 @@ var afterBurnLx = document.getElementById("afterBurnLx");
 var shuttleLaser = document.getElementById("shuttleLaser");
 var aliens = document.getElementById("aliens");
 var aliensLaser = document.getElementById("aliensLaser");
-var shield1P1 = document.getElementById("s1Part1");
-var shield1P2 = document.getElementById("s1Part2");
-var shield1P3 = document.getElementById("s1Part3");
-var shield2P1 = document.getElementById("s2Part1");
-var shield2P2 = document.getElementById("s2Part2");
-var shield2P3 = document.getElementById("s2Part3");
-var shield3P1 = document.getElementById("s3Part1");
-var shield3P2 = document.getElementById("s3Part2");
-var shield3P3 = document.getElementById("s3Part3");
-// var line1 = document.querySelectorAll("#line1 *");
-// var line2 = document.querySelectorAll("#line2 *");
-// line1[9].classList.add("pIndex");
-// line2[0].classList.add("pIndex");
+var shield_1 = document.querySelectorAll("#shield1 *");
+var shield_2 = document.querySelectorAll("#shield2 *");
+var shield_3 = document.querySelectorAll("#shield3 *");
+var aliensLine_1 = document.querySelectorAll("#line1 *");
+var aliensLine_2 = document.querySelectorAll("#line2 *");
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -69,10 +61,14 @@ var inGame = {
 // document.getElementById("lives").innerHTML =  lives + 1
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// function updateOfClassList() {
-//   function shield1
-// }
+// var shield_1 = document.querySelectorAll("#shield1 *");
+// var shield_2 = document.querySelectorAll("#shield2 *");
+// var shield_3 = document.querySelectorAll("#shield3 *");
+// var line_1 = document.querySelectorAll("#line1 *");
+// var line_2 = document.querySelectorAll("#line2 *");
+// line_1[9].classList.add("alienShip");
+// line_2[0].classList.add("alienShip");
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function aliensFireOn() {
   position.aliensLaserAxisX = position.aliensAxisX + 22 + (Math.floor(Math.random() * 10) * 100);
@@ -105,58 +101,63 @@ function shuttleFireOff() {
 };
 
 function shieldsActivation() {
-  if (inGame.shield1[0]) { shield1P1.classList.add("shieldP1") };
-  if (inGame.shield1[1]) { shield1P2.classList.add("shieldP2") };
-  if (inGame.shield1[2]) { shield1P3.classList.add("shieldP3") };
-  if (inGame.shield2[0]) { shield2P1.classList.add("shieldP1") };
-  if (inGame.shield2[1]) { shield2P2.classList.add("shieldP2") };
-  if (inGame.shield2[2]) { shield2P3.classList.add("shieldP3") };
-  if (inGame.shield3[0]) { shield3P1.classList.add("shieldP1") };
-  if (inGame.shield3[1]) { shield3P2.classList.add("shieldP2") };
-  if (inGame.shield3[2]) { shield3P3.classList.add("shieldP3") };
+  shield_1[0].classList.add("shieldP1");
+  shield_1[1].classList.add("shieldP2");
+  shield_1[2].classList.add("shieldP3");
+  shield_2[0].classList.add("shieldP1");
+  shield_2[1].classList.add("shieldP2");
+  shield_2[2].classList.add("shieldP3");
+  shield_3[0].classList.add("shieldP1");
+  shield_3[1].classList.add("shieldP2");
+  shield_3[2].classList.add("shieldP3");
+};
+
+function aliensEntry() {
+  inGame.aliensLine1 = [true, true, true, true, true, true, true, true, true, true];
+  inGame.aliensLine2 = [true, true, true, true, true, true, true, true, true, true];
 };
 
 function aliensLaserOnShields() {
   if (position.aliensLaserAxisX > 1152 && position.aliensLaserAxisX < 1272) {
     if ((position.aliensLaserAxisX > 1187 && position.aliensLaserAxisX < 1227) && inGame.shield3[1]) {
       aliensFireOff();
-      shield3P2.classList.remove("shieldP2");
+      shield_3[1].classList.remove("shieldP2");
       inGame.shield3[1] = false;
     } else if ((position.aliensLaserAxisX > 1152 && position.aliensLaserAxisX < 1197) && inGame.shield3[0]) {
       aliensFireOff();
-      shield3P1.classList.remove("shieldP1");
+      shield_3[0].classList.remove("shieldP1");
       inGame.shield3[0] = false;
     } else if ((position.aliensLaserAxisX > 1222 && position.aliensLaserAxisX < 1272) && inGame.shield3[2]) {
       aliensFireOff();
-      shield3P3.classList.remove("shieldP3");
+      shield_3[2].classList.remove("shieldP3");
       inGame.shield3[2] = false;
     };
   } else if (position.aliensLaserAxisX > 632 && position.aliensLaserAxisX < 752) {
     if ((position.aliensLaserAxisX > 667 && position.aliensLaserAxisX < 707) && inGame.shield2[1]) {
       aliensFireOff();
-      shield2P2.classList.remove("shieldP2");
+      shield_2[1].classList.remove("shieldP2");
       inGame.shield2[1] = false;
     } else if ((position.aliensLaserAxisX > 632 && position.aliensLaserAxisX < 677) && inGame.shield2[0]) {
       aliensFireOff();
-      shield2P1.classList.remove("shieldP1");
+      shield_2[0].classList.remove("shieldP1");
       inGame.shield2[0] = false;
     } else if ((position.aliensLaserAxisX > 702 && position.aliensLaserAxisX < 752) && inGame.shield2[2]) {
       aliensFireOff();
-      shield2P3.classList.remove("shieldP3");
+      shield_2[2].classList.remove("shieldP3");
       inGame.shield2[2] = false;
     };
   } else if (position.aliensLaserAxisX > 112 && position.aliensLaserAxisX < 232) {
     if ((position.aliensLaserAxisX > 147 && position.aliensLaserAxisX < 187) && inGame.shield1[1]) {
       aliensFireOff();
-      shield1P2.classList.remove("shieldP2");
+      shield_1[1].classList.remove("shieldP2");
       inGame.shield1[1] = false;
     } else if ((position.aliensLaserAxisX > 112 && position.aliensLaserAxisX < 157) && inGame.shield1[0]) {
       aliensFireOff();
-      shield1P1.classList.remove("shieldP1");
+      shield_1[0].classList.remove("shieldP1");
       inGame.shield1[0] = false;
     } else if ((position.aliensLaserAxisX > 182 && position.aliensLaserAxisX < 232) && inGame.shield1[2]) {
       aliensFireOff();
-      shield1P3.classList.remove("shieldP3");
+      shield_1[2].classList.remove("shieldP3");
       inGame.shield1[2] = false;
     };
   } else {
@@ -168,43 +169,43 @@ function shuttleLaserOnShields() {
   if (position.shuttleLaserAxisX > 1152 && position.shuttleLaserAxisX < 1272) {
     if ((position.shuttleLaserAxisX > 1187 && position.shuttleLaserAxisX < 1227) && inGame.shield3[1]) {
       shuttleFireOff();
-      shield3P2.classList.remove("shieldP2");
+      shield_3[1].classList.remove("shieldP2");
       inGame.shield3[1] = false;
     } else if ((position.shuttleLaserAxisX > 1152 && position.shuttleLaserAxisX < 1197) && inGame.shield3[0]) {
       shuttleFireOff();
-      shield3P1.classList.remove("shieldP1");
+      shield_3[0].classList.remove("shieldP1");
       inGame.shield3[0] = false;
     } else if ((position.shuttleLaserAxisX > 1222 && position.shuttleLaserAxisX < 1272) && inGame.shield3[2]) {
       shuttleFireOff();
-      shield3P3.classList.remove("shieldP3");
+      shield_3[2].classList.remove("shieldP3");
       inGame.shield3[2] = false;
     };
   } else if (position.shuttleLaserAxisX > 632 && position.shuttleLaserAxisX < 752) {
     if ((position.shuttleLaserAxisX > 667 && position.shuttleLaserAxisX < 707) && inGame.shield2[1]) {
       shuttleFireOff();
-      shield2P2.classList.remove("shieldP2");
+      shield_2[1].classList.remove("shieldP2");
       inGame.shield2[1] = false;
     } else if ((position.shuttleLaserAxisX > 632 && position.shuttleLaserAxisX < 677) && inGame.shield2[0]) {
       shuttleFireOff();
-      shield2P1.classList.remove("shieldP1");
+      shield_2[0].classList.remove("shieldP1");
       inGame.shield2[0] = false;
     } else if ((position.shuttleLaserAxisX > 702 && position.shuttleLaserAxisX < 752) && inGame.shield2[2]) {
       shuttleFireOff();
-      shield2P3.classList.remove("shieldP3");
+      shield_2[2].classList.remove("shieldP3");
       inGame.shield2[2] = false;
     };
   } else if (position.shuttleLaserAxisX > 112 && position.shuttleLaserAxisX < 232) {
     if ((position.shuttleLaserAxisX > 147 && position.shuttleLaserAxisX < 187) && inGame.shield1[1]) {
       shuttleFireOff();
-      shield1P2.classList.remove("shieldP2");
+      shield_1[1].classList.remove("shieldP2");
       inGame.shield1[1] = false;
     } else if ((position.shuttleLaserAxisX > 112 && position.shuttleLaserAxisX < 157) && inGame.shield1[0]) {
       shuttleFireOff();
-      shield1P1.classList.remove("shieldP1");
+      shield_1[0].classList.remove("shieldP1");
       inGame.shield1[0] = false;
     } else if ((position.shuttleLaserAxisX > 182 && position.shuttleLaserAxisX < 232) && inGame.shield1[2]) {
       shuttleFireOff();
-      shield1P3.classList.remove("shieldP3");
+      shield_1[2].classList.remove("shieldP3");
       inGame.shield1[2] = false;
     };
   } else {
@@ -217,7 +218,6 @@ function shuttleLaserOnShields() {
 function startResume() {
 
   if (inGame.isIt_) {
-    shieldsActivation();
   } else {
     shieldsActivation();
     levelText.classList.add("level");
