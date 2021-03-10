@@ -13,6 +13,7 @@ var shield_3 = document.querySelectorAll("#shield3 *");
 var aliensLine_1 = document.querySelectorAll("#line1 *");
 var aliensLine_2 = document.querySelectorAll("#line2 *");
 
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var shuttleLogic;
@@ -100,21 +101,35 @@ function shuttleFireOff() {
   input.shuttleLaserFisicalStatus = 'start';
 };
 
-function shieldsActivation() {
-  shield_1[0].classList.add("shieldP1");
-  shield_1[1].classList.add("shieldP2");
-  shield_1[2].classList.add("shieldP3");
-  shield_2[0].classList.add("shieldP1");
-  shield_2[1].classList.add("shieldP2");
-  shield_2[2].classList.add("shieldP3");
-  shield_3[0].classList.add("shieldP1");
-  shield_3[1].classList.add("shieldP2");
-  shield_3[2].classList.add("shieldP3");
+function shieldsActivation(element, index) {
+  if (index == 0) {
+    element = element.classList.add("shieldP1");
+  } else if (index == 1) {
+    element = element.classList.add("shieldP2");
+  } else if (index == 2) {
+    element = element.classList.add("shieldP3");
+  };
+};
+function shieldsEntry() {
+  shield_1.forEach(shieldsActivation);
+  shield_2.forEach(shieldsActivation);
+  shield_3.forEach(shieldsActivation);
 };
 
+function aliensPreIn(element, index) {
+  if (index == 4) {
+    element = element.classList.add("alienShip");
+  } else if (index == 3 || index == 5 || index == 6) {
+    element = element.classList.add("alienShip2");
+  } else if (index == 1 || index == 2 || index == 7) {
+    element = element.classList.add("alienShip3");
+  } else if (index == 0 || index == 8 || index == 9) {
+    element = element.classList.add("alienShip4");
+  };
+};
 function aliensEntry() {
-  inGame.aliensLine1 = [true, true, true, true, true, true, true, true, true, true];
-  inGame.aliensLine2 = [true, true, true, true, true, true, true, true, true, true];
+  aliensLine_1.forEach(aliensPreIn);
+  aliensLine_2.forEach(aliensPreIn);
 };
 
 function aliensLaserOnShields() {
@@ -217,16 +232,18 @@ function shuttleLaserOnShields() {
 
 function startResume() {
 
-  if (inGame.isIt_) {
-  } else {
-    shieldsActivation();
+  if (!inGame.isIt_) {
+    shieldsEntry();
     levelText.classList.add("level");
     shuttle.classList.add("shuttle");
     inGameTxt.classList.add("inGameTxt");
     setTimeout(function() {
+      aliensEntry();
+    }, 3000);
+    setTimeout(function() {
       input.aliensLaserStatus = 'off';
       input.shuttleLaserStatus = 'off';
-    }, 7000);
+    }, 5000);
     inGame.isIt_ = true;
   };
 

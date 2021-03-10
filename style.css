@@ -43,7 +43,7 @@ h1 {
   z-index: 9;
 }
 .inGameTxt {
-  animation: inGameTxt 8s ease-out;
+  animation: inGameTxt 5.5s ease-out;
   animation-fill-mode: forwards;
 }
 @keyframes inGameTxt {
@@ -111,11 +111,11 @@ h1 {
 }
 .shuttle {
   background-image: url("./img/shuttle.tiff");
-  animation: shuttle 4s ease-out;
+  animation: shuttle 3.5s ease-out;
 }
 @keyframes shuttle {
   0%{top: 740px;}
-  70%{top: 740px;}
+  90%{top: 740px;}
   100%{top: 640px;}
 }
 .afterBurnRx {
@@ -193,12 +193,29 @@ h1 {
   position: absolute;
   width: 60px;
   height: 140px;
-  background-image: url("./img/alienShip.tiff");
   z-index: 2;
 }
-/* .alienShip {
+.alienShip {
   background-image: url("./img/alienShip.tiff");
-} */
+  animation: alienShip 1.2s ease-out;
+}
+.alienShip2 {
+  background-image: url("./img/alienShip.tiff");
+  animation: alienShip 1.5s ease-out;
+}
+.alienShip3 {
+  background-image: url("./img/alienShip.tiff");
+  animation: alienShip 1.6s ease-out;
+}
+.alienShip4 {
+  background-image: url("./img/alienShip.tiff");
+  animation: alienShip 1.7s ease-out;
+}
+@keyframes alienShip {
+  0%{top: -300px;}
+  70%{top: -300px;}
+  100%{top: 0px;}
+}
 #part2 {
   left: 100px;
 }
