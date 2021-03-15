@@ -126,14 +126,25 @@ h1 {
 }
 #shuttleLaser {
   position: absolute;
-  width: 17px;
-  height: 57px;
-  top: 600px;
+  width: 16px;
+  height: 40px;
+  top: 630px;
   left: 692px;
   z-index: 1;
 }
 .shuttleLaser {
   background-image: url("./img/blueLaser.tiff");
+}
+#aliensLaser {
+  position: absolute;
+  width: 16px;
+  height: 40px;
+  left: 1px;
+  top: 1px;
+  z-index: 1;
+}
+.aliensLaser {
+  background-image: url("./img/redLaser.tiff");
 }
 
 #shields > #shield1 {
@@ -242,17 +253,6 @@ h1 {
 }
 #part10 {
   left: 900px;
-}
-#aliensLaser {
-  position: absolute;
-  width: 17px;
-  height: 57px;
-  left: 1px;
-  top: 1px;
-  z-index: 1;
-}
-.aliensLaser {
-  background-image: url("./img/redLaser.tiff");
 }
 
 #topCover {
