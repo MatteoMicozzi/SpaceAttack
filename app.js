@@ -1,6 +1,13 @@
+var body = document.getElementById("body");
+var menu = document.getElementById("menu");
+var title = document.getElementById("title");
+var startPause = document.getElementById("startPause");
 var spaceAttack = document.getElementById("spaceAttack");
+var inGameTopTxt = document.getElementById("inGameTopTxt");
+
+
 var levelText = document.getElementById("levelAtStart");
-var inGameTxt = document.getElementById("inGameTxt");
+var gameTopTxt = document.getElementById("gameTopTxt");
 var lives = document.getElementById("lives");
 var level = document.getElementById("level");
 var score = document.getElementById("score");
@@ -62,6 +69,25 @@ var inGame = {
                 [true, true, true, true, true, true, true, true, true, true]],
   monsterLives: 0,
   isIt_       : false
+};
+
+var game = {
+  counter : 0,
+  level_1 : 20,
+  level_2 : 30,
+  level_3 : 40,
+  level_4 : 50,
+  level_5 : 80,
+  level_6 : 20,
+  level_7 : 40,
+  level_8 : 60,
+  level_9 : 80,
+  level_10: 120,
+  level_11: 30,
+  level_12: 60,
+  level_13: 90,
+  level_14: 120,
+  level_15: 200
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -285,7 +311,7 @@ function startResume() {
     shieldsEntry();
     levelText.classList.add("level");
     shuttle.classList.add("shuttle");
-    inGameTxt.classList.add("inGameTxt");
+    gameTopTxt.classList.add("gameTopTxt");
     lives.innerHTML = user.lives;
     level.innerHTML = user.level;
     score.innerHTML = user.score;
@@ -397,7 +423,23 @@ document.getElementById("startPause").addEventListener("click", function() {
   onPlayPause();
 });
 
+function windowResize() {
+  let width = window.innerWidth;
+  let height = window.innerHeight;
+  let size = (width > height) ? height : width;
+
+  body.style.cssText = `font-size: ${(size / 100) * 2}px`;
+  title.style.cssText = `font-size: ${(size / 100) * 7}px; top: ${size / 100}px`;
+  startPause.style.cssText = `font-size: ${(size / 100) * 3}px; top: ${size / 100}px`;
+  menu.style.cssText = `width: ${width - ((width / 100) * 2.8)}px; height: ${(size / 100) * 11.5}px; border: ${(size / 100) + 2}px solid blue`;
+  spaceAttack.style.cssText = `top: ${(size / 100) * 13.8}px; width: ${width - ((width / 100) * 2.8)}px; height: ${height - ((size / 100) * 18)}px; border: ${(size / 100) + 2}px solid blue`;
+  inGameTopTxt.style.cssText = `top: ${((size / 100) + 2) * 2}px`;
+  levelText.style.cssText = `font-size: ${((size / 100) + 2) * 10}px`;
+};
+windowResize();
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window.addEventListener('resize', windowResize);
 
 document.addEventListener("keydown", function(event) {
   if (event.keyCode == 39) {
