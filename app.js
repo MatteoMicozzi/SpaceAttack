@@ -4,6 +4,8 @@ var title = document.getElementById("title");
 var startPause = document.getElementById("startPause");
 var spaceAttack = document.getElementById("spaceAttack");
 var inGameTopTxt = document.getElementById("inGameTopTxt");
+var topCover = document.getElementById("topCover");
+var bottomCover = document.getElementById("bottomCover");
 
 
 var levelText = document.getElementById("levelAtStart");
@@ -427,14 +429,18 @@ function windowResize() {
   let width = window.innerWidth;
   let height = window.innerHeight;
   let size = (width > height) ? height : width;
+  let sizeInProportion = (width > (height * 2)) ? height : width;
+  size = Math.floor(size / 100);
 
-  body.style.cssText = `font-size: ${(size / 100) * 2}px`;
-  title.style.cssText = `font-size: ${(size / 100) * 7}px; top: ${size / 100}px`;
-  startPause.style.cssText = `font-size: ${(size / 100) * 3}px; top: ${size / 100}px`;
-  menu.style.cssText = `width: ${width - ((width / 100) * 2.8)}px; height: ${(size / 100) * 11.5}px; border: ${(size / 100) + 2}px solid blue`;
-  spaceAttack.style.cssText = `top: ${(size / 100) * 13.8}px; width: ${width - ((width / 100) * 2.8)}px; height: ${height - ((size / 100) * 18)}px; border: ${(size / 100) + 2}px solid blue`;
-  inGameTopTxt.style.cssText = `top: ${((size / 100) + 2) * 2}px`;
-  levelText.style.cssText = `font-size: ${((size / 100) + 2) * 10}px`;
+  body.style.cssText = `font-size: ${size * 2}px`;
+  title.style.cssText = `font-size: ${size * 7}px; top: ${size}px`;
+  startPause.style.cssText = `font-size: ${size * 3}px; top: ${size * 9}px`;
+  menu.style.cssText = `top: ${size}px; left: ${size}px; width: ${width - (size * 4)}px; height: ${size * 13}px; border: ${size}px solid blue`;
+  spaceAttack.style.cssText = `top: ${size * 15}px; left: ${size}px; width: ${width - (size * 4)}px; height: ${height - (size * 18)}px; border: ${size}px solid blue`;
+  inGameTopTxt.style.cssText = `top: ${size * 2}px`;
+  levelText.style.cssText = `font-size: ${(size + 2) * 10}px`;
+  bottomCover.style.cssText = `top: ${height - (size * 17)}px`;
+  topCover.style.cssText = `top: -${100 + size}px`;
 };
 windowResize();
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
