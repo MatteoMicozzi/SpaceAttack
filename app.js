@@ -3,7 +3,8 @@ var menu = document.getElementById("menu");
 var title = document.getElementById("title");
 var startPause = document.getElementById("startPause");
 var spaceAttack = document.getElementById("spaceAttack");
-var inGameTopTxt = document.getElementById("inGameTopTxt");
+var shellGameTopTxt = document.getElementById("shellGameTopTxt");
+var shellShuttle = document.getElementById("shellShuttle");
 var topCover = document.getElementById("topCover");
 var bottomCover = document.getElementById("bottomCover");
 
@@ -29,6 +30,10 @@ var aliensLines = [aliensLine_1, aliensLine_2];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+var windowInWidth;
+var windowInHeight
+var scaleSize1;
+var scaleSize2;
 var shuttleLogic;
 var aliensLogic;
 var aliensLaserPrefireLogic;
@@ -333,11 +338,11 @@ function startResume() {
     position.shuttleAxisX = parseInt(window.getComputedStyle(shuttle).getPropertyValue("left"));
     position.shuttleLaserAxisY = parseInt(window.getComputedStyle(shuttleLaser).getPropertyValue("top"));
 
-    if (input.rightKey == 'down' && position.shuttleAxisX <= 1320) {
-      shuttle.style.setProperty("left", (position.shuttleAxisX + 4) + "px");
+    if (input.rightKey == 'down' && position.shuttleAxisX < (windowInWidth - (scaleSize1 * 4) - (scaleSize2 * 8))) {
+      shuttle.style.setProperty("left", (position.shuttleAxisX + (scaleSize2 / 2)) + "px");
     };
-    if (input.leftKey == 'down' && position.shuttleAxisX >= 20) {
-      shuttle.style.setProperty("left", (position.shuttleAxisX - 4) + "px");
+    if (input.leftKey == 'down' && position.shuttleAxisX >= (scaleSize2 * 2)) {
+      shuttle.style.setProperty("left", (position.shuttleAxisX - (scaleSize2 / 2)) + "px");
     };
 
     if (input.shuttleLaserStatus == 'on') {
@@ -426,21 +431,26 @@ document.getElementById("startPause").addEventListener("click", function() {
 });
 
 function windowResize() {
-  let width = window.innerWidth;
-  let height = window.innerHeight;
-  let size = (width > height) ? height : width;
-  let sizeInProportion = (width > (height * 2)) ? height : width;
-  size = Math.floor(size / 100);
+  windowInWidth = window.innerWidth;
+  windowInHeight = window.innerHeight;
+  scaleSize1 = (windowInWidth > windowInHeight) ? windowInHeight : windowInWidth;
+  scaleSize1 = Math.floor(scaleSize1 / 100);
+  scaleSize2 = (windowInWidth > (windowInHeight * 2)) ? windowInHeight : (windowInWidth / 2);
+  scaleSize2 = Math.floor(scaleSize2 / 100) + 3;
 
-  body.style.cssText = `font-size: ${size * 2}px`;
-  title.style.cssText = `font-size: ${size * 7}px; top: ${size}px`;
-  startPause.style.cssText = `font-size: ${size * 3}px; top: ${size * 9}px`;
-  menu.style.cssText = `top: ${size}px; left: ${size}px; width: ${width - (size * 4)}px; height: ${size * 13}px; border: ${size}px solid blue`;
-  spaceAttack.style.cssText = `top: ${size * 15}px; left: ${size}px; width: ${width - (size * 4)}px; height: ${height - (size * 18)}px; border: ${size}px solid blue`;
-  inGameTopTxt.style.cssText = `top: ${size * 2}px`;
-  levelText.style.cssText = `font-size: ${(size + 2) * 10}px`;
-  bottomCover.style.cssText = `top: ${height - (size * 17)}px`;
-  topCover.style.cssText = `top: -${100 + size}px`;
+  body.style.cssText = `font-size: ${scaleSize1 * 2}px`;
+  title.style.cssText = `font-size: ${scaleSize1 * 7}px; top: ${scaleSize1}px`;
+  startPause.style.cssText = `font-size: ${scaleSize1 * 3}px; top: ${scaleSize1 * 9}px`;
+  menu.style.cssText = `top: ${scaleSize1}px; left: ${scaleSize1}px; width: ${windowInWidth - (scaleSize1 * 4)}px; height: ${scaleSize1 * 13}px; border: ${scaleSize1}px solid blue`;
+  spaceAttack.style.cssText = `top: ${scaleSize1 * 15}px; left: ${scaleSize1}px; width: ${windowInWidth - (scaleSize1 * 4)}px; height: ${windowInHeight - (scaleSize1 * 18)}px; border: ${scaleSize1}px solid blue`;
+  shellGameTopTxt.style.cssText = `top: ${scaleSize1 * 2}px`;
+  levelText.style.cssText = `font-size: ${(scaleSize1 + 2) * 10}px`;
+  bottomCover.style.cssText = `top: ${windowInHeight - (scaleSize1 * 17)}px`;
+  topCover.style.cssText = `top: -${100 + scaleSize1}px`;
+  shuttle.style.cssText = `left: ${((windowInWidth - (scaleSize1 * 4)) / 2) - (scaleSize2 * 3)}px; width: ${scaleSize2 * 6}px; height: ${scaleSize2 * 6}px`
+  shellShuttle.style.cssText = `top: ${windowInHeight - (scaleSize1 * 18) - (scaleSize2 * 6)}px`;
+  afterBurnRx.style.cssText = `width: ${scaleSize2 * 6}px; height: ${scaleSize2 * 3}px; top: ${scaleSize2}px; left: ${scaleSize2 * 6}px`;
+  afterBurnLx.style.cssText = `width: ${scaleSize2 * 6}px; height: ${scaleSize2 * 3}px; top: ${scaleSize2}px; left: -${scaleSize2 * 6}px`;
 };
 windowResize();
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

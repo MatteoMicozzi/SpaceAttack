@@ -28,7 +28,7 @@
   background-image: url("./img/background.jpg");
 }
 
-#inGameTopTxt {
+#shellGameTopTxt {
   position: absolute;
   width: 100%;
 }
@@ -82,36 +82,31 @@
   100%{color: transparent;}
 }
 
+#shellShuttle {
+  position: absolute;
+  width: 100%;
+}
 #shuttle {
   position: absolute;
-  top: 640px;
-  left: 670px;
-  width: 60px;
-  height: 71px;
+  background-size: contain;
   z-index: 3;
 }
 #afterBurnRx {
-  width: 35px;
-  height: 18px;
   position: absolute;
-  top: 15px;
-  left: 54px;
+  background-size: contain;
 }
 #afterBurnLx {
-  width: 35px;
-  height: 18px;
   position: absolute;
-  top: 15px;
-  left: -28px;
+  background-size: contain;
 }
 .shuttle {
   background-image: url("./img/shuttle.tiff");
   animation: shuttle 3.5s ease-out;
 }
 @keyframes shuttle {
-  0%{top: 740px;}
-  90%{top: 740px;}
-  100%{top: 640px;}
+  0%{top: 200px;}
+  90%{top: 200px;}
+  100%{top: 0px;}
 }
 .afterBurnRx {
   background-image: url("./img/afterBurnRx.tiff");
