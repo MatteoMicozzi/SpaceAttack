@@ -28,6 +28,7 @@ var shield3 = document.querySelector("#shield3");
 var shield_1 = document.querySelectorAll("#shield1 *");
 var shield_2 = document.querySelectorAll("#shield2 *");
 var shield_3 = document.querySelectorAll("#shield3 *");
+var aliensLine1 = document.querySelector("#line1");
 var aliensLine_2 = document.querySelectorAll("#line2 *");
 var aliensLine_1 = document.querySelectorAll("#line1 *");
 var aliensLines = [aliensLine_1, aliensLine_2];
@@ -374,12 +375,12 @@ function startResume() {
     position.aliensAxisX = parseInt(window.getComputedStyle(aliens).getPropertyValue("left"));
     position.aliensLaserAxisY = parseInt(window.getComputedStyle(aliensLaser).getPropertyValue("top"));
 
-    if (input.aliensDirection == 'right' && position.aliensAxisX <= 420) {
+    if (input.aliensDirection == 'right' && position.aliensAxisX <= (windowInWidth - (scaleSize1 * 4) - (scaleSize2 * 98))) {
       aliens.style.setProperty("left", (position.aliensAxisX + 1) + "px");
     } else {
       input.aliensDirection = 'left';
     };
-    if (input.aliensDirection == 'left' && position.aliensAxisX >= 20) {
+    if (input.aliensDirection == 'left' && position.aliensAxisX >= (scaleSize2 * 2)) {
       aliens.style.setProperty("left", (position.aliensAxisX - 1) + "px");
     } else {
       input.aliensDirection = 'right';
@@ -454,12 +455,14 @@ function windowResize() {
   afterBurnRx.style.cssText = `width: ${scaleSize2 * 6}px; height: ${scaleSize2 * 3}px; top: ${scaleSize2}px; left: ${scaleSize2 * 6}px`;
   afterBurnLx.style.cssText = `width: ${scaleSize2 * 6}px; height: ${scaleSize2 * 3}px; top: ${scaleSize2}px; left: -${scaleSize2 * 6}px`;
   shields.style.cssText = `top: ${windowInHeight - (scaleSize1 * 18) - (scaleSize2 * 12)}px`;
-  shieldsAll.forEach(function(element) {
-    element.style.cssText = `width: ${scaleSize2 * 12}px; height: ${scaleSize2 * 4}px`;
-  });
+  shieldsAll.forEach(function(element) { element.style.cssText = `width: ${scaleSize2 * 12}px; height: ${scaleSize2 * 4}px` });
   shield1.style.cssText = `left: ${scaleSize2 * 12}px`;
   shield2.style.cssText = `left: ${((windowInWidth - (scaleSize1 * 4)) / 2) - scaleSize2 * 6}px`;
   shield3.style.cssText = `left: ${windowInWidth - (scaleSize1 * 4) - (scaleSize2 * 24)}px`;
+  aliens.style.cssText = `top: ${scaleSize2 * 3}px; left: ${scaleSize2 * 3}px; width: ${scaleSize2 * 96}px; height: ${scaleSize2 * 16}px`;
+  aliensLine1.style.cssText = `top: ${scaleSize2 * 8}px`;
+  aliensLine_1.forEach(function(element, position) { element.style.cssText = `left: ${scaleSize2 * (position * 10)}px; width: ${scaleSize2 * 6}px; height: ${scaleSize2 * 8}px` });
+  aliensLine_2.forEach(function(element, position) { element.style.cssText = `left: ${scaleSize2 * (position * 10)}px; width: ${scaleSize2 * 6}px; height: ${scaleSize2 * 8}px` });
 };
 windowResize();
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

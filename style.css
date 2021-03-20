@@ -170,37 +170,29 @@
 
 #aliens {
   position: absolute;
-  top: 20px;
-  left: 220px;
-  width: 960px;
-  height: 280px;
 }
 #line1, #line2 {
   position: absolute;
 }
-#line1 {
-  top: 140px;
-}
 #part1, #part2, #part3, #part4, #part5, #part6, #part7, #part8, #part9, #part10 {
   position: absolute;
-  width: 60px;
-  height: 140px;
+  background-size: contain;
   z-index: 2;
 }
 .alienShip {
-  background-image: url("./img/alienShip.tiff");
+  background-image: url("./img/alienShip1.tiff");
   animation: alienShip 1.2s ease-out;
 }
 .alienShip2 {
-  background-image: url("./img/alienShip.tiff");
+  background-image: url("./img/alienShip1.tiff");
   animation: alienShip 1.5s ease-out;
 }
 .alienShip3 {
-  background-image: url("./img/alienShip.tiff");
+  background-image: url("./img/alienShip1.tiff");
   animation: alienShip 1.6s ease-out;
 }
 .alienShip4 {
-  background-image: url("./img/alienShip.tiff");
+  background-image: url("./img/alienShip1.tiff");
   animation: alienShip 1.7s ease-out;
 }
 @keyframes alienShip {
