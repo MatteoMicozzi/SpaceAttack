@@ -137,25 +137,16 @@
   background-image: url("./img/redLaser.tiff");
 }
 
-#shields > #shield1 {
+#shields {
   position: absolute;
-  top: 580px;
-  left: 120px;
+  width: 100%;
 }
-#shields > #shield2 {
+#shield1, #shield2, #shield3 {
   position: absolute;
-  top: 580px;
-  left: 640px;
-}
-#shields > #shield3 {
-  position: absolute;
-  top: 580px;
-  left: 1160px;
 }
 #s1Part1, #s1Part2, #s1Part3, #s2Part1, #s2Part2, #s2Part3, #s3Part1, #s3Part2, #s3Part3 {
   position: absolute;
-  width: 120px;
-  height: 40px;
+  background-size: contain;
   z-index: 2;
 }
 .shieldP1 {

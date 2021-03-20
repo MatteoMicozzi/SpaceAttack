@@ -8,7 +8,6 @@ var shellShuttle = document.getElementById("shellShuttle");
 var topCover = document.getElementById("topCover");
 var bottomCover = document.getElementById("bottomCover");
 
-
 var levelText = document.getElementById("levelAtStart");
 var gameTopTxt = document.getElementById("gameTopTxt");
 var lives = document.getElementById("lives");
@@ -21,14 +20,17 @@ var shuttleLaser = document.getElementById("shuttleLaser");
 var aliens = document.getElementById("aliens");
 var aliensLaser = document.getElementById("aliensLaser");
 
+var shields = document.querySelector("#shields");
+var shieldsAll = document.querySelectorAll("#s1Part1, #s1Part2, #s1Part3, #s2Part1, #s2Part2, #s2Part3, #s3Part1, #s3Part2, #s3Part3");
+var shield1 = document.querySelector("#shield1");
+var shield2 = document.querySelector("#shield2");
+var shield3 = document.querySelector("#shield3");
 var shield_1 = document.querySelectorAll("#shield1 *");
 var shield_2 = document.querySelectorAll("#shield2 *");
 var shield_3 = document.querySelectorAll("#shield3 *");
 var aliensLine_2 = document.querySelectorAll("#line2 *");
 var aliensLine_1 = document.querySelectorAll("#line1 *");
 var aliensLines = [aliensLine_1, aliensLine_2];
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var windowInWidth;
 var windowInHeight
@@ -451,6 +453,13 @@ function windowResize() {
   shellShuttle.style.cssText = `top: ${windowInHeight - (scaleSize1 * 18) - (scaleSize2 * 6)}px`;
   afterBurnRx.style.cssText = `width: ${scaleSize2 * 6}px; height: ${scaleSize2 * 3}px; top: ${scaleSize2}px; left: ${scaleSize2 * 6}px`;
   afterBurnLx.style.cssText = `width: ${scaleSize2 * 6}px; height: ${scaleSize2 * 3}px; top: ${scaleSize2}px; left: -${scaleSize2 * 6}px`;
+  shields.style.cssText = `top: ${windowInHeight - (scaleSize1 * 18) - (scaleSize2 * 12)}px`;
+  shieldsAll.forEach(function(element) {
+    element.style.cssText = `width: ${scaleSize2 * 12}px; height: ${scaleSize2 * 4}px`;
+  });
+  shield1.style.cssText = `left: ${scaleSize2 * 12}px`;
+  shield2.style.cssText = `left: ${((windowInWidth - (scaleSize1 * 4)) / 2) - scaleSize2 * 6}px`;
+  shield3.style.cssText = `left: ${windowInWidth - (scaleSize1 * 4) - (scaleSize2 * 24)}px`;
 };
 windowResize();
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
