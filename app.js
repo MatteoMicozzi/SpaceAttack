@@ -34,7 +34,9 @@ var aliensLine_1 = document.querySelectorAll("#line1 *");
 var aliensLines = [aliensLine_1, aliensLine_2];
 
 var windowInWidth;
-var windowInHeight
+var windowInHeight;
+var spaceAttackWidth;
+var spaceAttackHeight;
 var scaleSize1;
 var scaleSize2;
 var shuttleLogic;
@@ -349,18 +351,18 @@ function startResume() {
     };
 
     if (input.shuttleLaserStatus == 'on') {
-      shuttleLaser.style.setProperty("top", (position.shuttleLaserAxisY - 10) + "px");
+      shuttleLaser.style.setProperty("top", (position.shuttleLaserAxisY - scaleSize2) + "px");
     };
 
-    if (position.shuttleLaserAxisY < 600 && input.shuttleLaserPhysicalStatus == 'start') {
+    if (position.shuttleLaserAxisY < (spaceAttackHeight - (scaleSize2 * 10)) && input.shuttleLaserPhysicalStatus == 'start') {
       shuttleLaserOnShields();
     };
 
-    if (position.shuttleLaserAxisY < 280 && input.shuttleLaserPhysicalStatus == 'afterShields') {
+    if (position.shuttleLaserAxisY < (scaleSize2 * 19) && input.shuttleLaserPhysicalStatus == 'afterShields') {
       shuttleLaserOnAliensLine(position.aliensAxisX, position.shuttleLaserAxisX, 0);
     };
 
-    if (position.shuttleLaserAxisY < 140 && input.shuttleLaserPhysicalStatus == 'after1stAliensLine') {
+    if (position.shuttleLaserAxisY < (scaleSize2 * 11) && input.shuttleLaserPhysicalStatus == 'after1stAliensLine') {
       shuttleLaserOnAliensLine(position.aliensAxisX, position.shuttleLaserAxisX, 1);
     };
 
@@ -387,14 +389,14 @@ function startResume() {
     };
 
     if (input.aliensLaserStatus == 'on') {
-      aliensLaser.style.setProperty("top", (position.aliensLaserAxisY + 7) + "px");
+      aliensLaser.style.setProperty("top", (position.aliensLaserAxisY + (scaleSize2 / 1.5)) + "px");
     };
 
-    if (position.aliensLaserAxisY > 560 && input.aliensLaserPhysicalStatus == 'start') {
+    if (position.aliensLaserAxisY > (spaceAttackHeight - (scaleSize2 * 10)) && input.aliensLaserPhysicalStatus == 'start') { //abs height of laser need to be change
       aliensLaserOnShields();
     };
 
-    if (position.aliensLaserAxisY >= 660) {
+    if (position.aliensLaserAxisY >= spaceAttackHeight) {                                                                    //abs height of laser need to be change
       aliensFireOff();
     };
   }, 5);
@@ -440,25 +442,27 @@ function windowResize() {
   scaleSize1 = Math.floor(scaleSize1 / 100);
   scaleSize2 = (windowInWidth > (windowInHeight * 2)) ? windowInHeight : (windowInWidth / 2);
   scaleSize2 = Math.floor(scaleSize2 / 100) + 3;
+  spaceAttackWidth = windowInWidth - (scaleSize1 * 4);
+  spaceAttackHeight = windowInHeight - (scaleSize1 * 18);
 
   body.style.cssText = `font-size: ${scaleSize1 * 2}px`;
   title.style.cssText = `font-size: ${scaleSize1 * 7}px; top: ${scaleSize1}px`;
   startPause.style.cssText = `font-size: ${scaleSize1 * 3}px; top: ${scaleSize1 * 9}px`;
-  menu.style.cssText = `top: ${scaleSize1}px; left: ${scaleSize1}px; width: ${windowInWidth - (scaleSize1 * 4)}px; height: ${scaleSize1 * 13}px; border: ${scaleSize1}px solid blue`;
-  spaceAttack.style.cssText = `top: ${scaleSize1 * 15}px; left: ${scaleSize1}px; width: ${windowInWidth - (scaleSize1 * 4)}px; height: ${windowInHeight - (scaleSize1 * 18)}px; border: ${scaleSize1}px solid blue`;
+  menu.style.cssText = `top: ${scaleSize1}px; left: ${scaleSize1}px; width: ${spaceAttackWidth}px; height: ${scaleSize1 * 13}px; border: ${scaleSize1}px solid blue`;
+  spaceAttack.style.cssText = `top: ${scaleSize1 * 15}px; left: ${scaleSize1}px; width: ${spaceAttackWidth}px; height: ${spaceAttackHeight}px; border: ${scaleSize1}px solid blue`;
   shellGameTopTxt.style.cssText = `top: ${scaleSize1 * 2}px`;
   levelText.style.cssText = `font-size: ${(scaleSize1 + 2) * 10}px`;
-  bottomCover.style.cssText = `top: ${windowInHeight - (scaleSize1 * 17)}px`;
+  bottomCover.style.cssText = `top: ${spaceAttackHeight - scaleSize1}px`;
   topCover.style.cssText = `top: -${100 + scaleSize1}px`;
-  shuttle.style.cssText = `left: ${((windowInWidth - (scaleSize1 * 4)) / 2) - (scaleSize2 * 3)}px; width: ${scaleSize2 * 6}px; height: ${scaleSize2 * 6}px`
-  shellShuttle.style.cssText = `top: ${windowInHeight - (scaleSize1 * 18) - (scaleSize2 * 6)}px`;
+  shuttle.style.cssText = `left: ${spaceAttackWidth / 2) - (scaleSize2 * 3)}px; width: ${scaleSize2 * 6}px; height: ${scaleSize2 * 6}px`
+  shellShuttle.style.cssText = `top: ${spaceAttackHeight - (scaleSize2 * 6)}px`;
   afterBurnRx.style.cssText = `width: ${scaleSize2 * 6}px; height: ${scaleSize2 * 3}px; top: ${scaleSize2}px; left: ${scaleSize2 * 6}px`;
   afterBurnLx.style.cssText = `width: ${scaleSize2 * 6}px; height: ${scaleSize2 * 3}px; top: ${scaleSize2}px; left: -${scaleSize2 * 6}px`;
-  shields.style.cssText = `top: ${windowInHeight - (scaleSize1 * 18) - (scaleSize2 * 12)}px`;
+  shields.style.cssText = `top: ${spaceAttackHeight - (scaleSize2 * 12)}px`;
   shieldsAll.forEach(function(element) { element.style.cssText = `width: ${scaleSize2 * 12}px; height: ${scaleSize2 * 4}px` });
   shield1.style.cssText = `left: ${scaleSize2 * 12}px`;
-  shield2.style.cssText = `left: ${((windowInWidth - (scaleSize1 * 4)) / 2) - scaleSize2 * 6}px`;
-  shield3.style.cssText = `left: ${windowInWidth - (scaleSize1 * 4) - (scaleSize2 * 24)}px`;
+  shield2.style.cssText = `left: ${spaceAttackWidth / 2) - scaleSize2 * 6}px`;
+  shield3.style.cssText = `left: ${spaceAttackWidth - (scaleSize2 * 24)}px`;
   aliens.style.cssText = `top: ${scaleSize2 * 3}px; left: ${scaleSize2 * 3}px; width: ${scaleSize2 * 96}px; height: ${scaleSize2 * 16}px`;
   aliensLine1.style.cssText = `top: ${scaleSize2 * 8}px`;
   aliensLine_1.forEach(function(element, position) { element.style.cssText = `left: ${scaleSize2 * (position * 10)}px; width: ${scaleSize2 * 6}px; height: ${scaleSize2 * 8}px` });

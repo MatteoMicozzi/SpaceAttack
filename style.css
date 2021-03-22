@@ -180,19 +180,19 @@
   z-index: 2;
 }
 .alienShip {
-  background-image: url("./img/alienShip1.tiff");
+  background-image: url("./img/alienShip2.tiff");
   animation: alienShip 1.2s ease-out;
 }
 .alienShip2 {
-  background-image: url("./img/alienShip1.tiff");
+  background-image: url("./img/alienShip2.tiff");
   animation: alienShip 1.5s ease-out;
 }
 .alienShip3 {
-  background-image: url("./img/alienShip1.tiff");
+  background-image: url("./img/alienShip2.tiff");
   animation: alienShip 1.6s ease-out;
 }
 .alienShip4 {
-  background-image: url("./img/alienShip1.tiff");
+  background-image: url("./img/alienShip2.tiff");
   animation: alienShip 1.7s ease-out;
 }
 @keyframes alienShip {
