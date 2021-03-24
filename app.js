@@ -19,6 +19,7 @@ var afterBurnLx = document.getElementById("afterBurnLx");
 var shuttleLaser = document.getElementById("shuttleLaser");
 var aliens = document.getElementById("aliens");
 var aliensLaser = document.getElementById("aliensLaser");
+var gameOverElem = document.getElementById("gameOver");
 
 var shields = document.querySelector("#shields");
 var shieldsAll = document.querySelectorAll("#s1Part1, #s1Part2, #s1Part3, #s2Part1, #s2Part2, #s2Part3, #s3Part1, #s3Part2, #s3Part3");
@@ -60,7 +61,7 @@ var input = {
 var position = {
   shuttleAxisX          : 0,
   shuttleLaserAxisX     : 0,
-  shuttleLaserAxXOnTheGo: 0,
+  shuttleLaserAxXOnTheGo: 0,   /////// ???????????
   shuttleLaserAxisY     : 0,
   aliensAxisX           : 0,
   aliensLaserAxisX      : 0,
@@ -140,13 +141,13 @@ function randomAlienFire() {
     (Math.floor(Math.random() * 2) == 0) ? aliensAvailability = "line1" : aliensAvailability = "line2";
   };
   if (aliensAvailability == "line2") {
-    position.aliensLaserAxisX = position.aliensAxisX + 22 + (activeAliensLine2[randomIndexLine2] * 100);
-    aliensLaser.style.setProperty("top", "140px");
-    aliensLaser.style.setProperty("left", position.aliensLaserAxisX + "px");
+    position.aliensLaserAxisX = position.aliensAxisX + (scaleSize2 * 3) + (activeAliensLine2[randomIndexLine2] * (scaleSize2 * 10));
+    aliensLaser.style.setProperty("top", (scaleSize2 * 11) + "px");
+    aliensLaser.style.setProperty("left", (position.aliensLaserAxisX - scaleSize2) + "px");
   } else if (aliensAvailability == "line1") {
-    position.aliensLaserAxisX = position.aliensAxisX + 22 + (activeAliensLine1[randomIndexLine1] * 100);
-    aliensLaser.style.setProperty("top", "280px");
-    aliensLaser.style.setProperty("left", position.aliensLaserAxisX + "px");
+    position.aliensLaserAxisX = position.aliensAxisX + (scaleSize2 * 3) + (activeAliensLine1[randomIndexLine1] * (scaleSize2 * 10));
+    aliensLaser.style.setProperty("top", (scaleSize2 * 19) + "px");
+    aliensLaser.style.setProperty("left", (position.aliensLaserAxisX - scaleSize2) + "px");
   };
 };
 
@@ -166,8 +167,8 @@ function aliensFireOff() {
 };
 
 function shuttleFireOn() {
-  position.shuttleLaserAxisX = position.shuttleAxisX + 22;
-  shuttleLaser.style.setProperty("left", position.shuttleLaserAxisX + "px");
+  position.shuttleLaserAxisX = position.shuttleAxisX + (scaleSize2 * 3);
+  shuttleLaser.style.setProperty("left", (position.shuttleAxisX + (scaleSize2 * 2)) + "px");
   shuttleLaser.classList.add("shuttleLaser");
   input.shuttleLaserStatus = 'on';
 };
@@ -175,8 +176,27 @@ function shuttleFireOn() {
 function shuttleFireOff() {
   input.shuttleLaserStatus = 'off';
   shuttleLaser.classList.remove("shuttleLaser");
-  shuttleLaser.style.setProperty("top", "630px");
+  shuttleLaser.style.setProperty("top", (spaceAttackHeight - (scaleSize2 * 8)) + "px");
   input.shuttleLaserPhysicalStatus = 'start';
+};
+
+function gameOver() {
+  gameOverElem.classList.add("gameOver");
+  startPause.innerHTML = "Play";
+  aliensLine_1.forEach(function(element) { element.classList.remove("alienShip", "alienShip2", "alienShip3", "alienShip4") });
+  aliensLine_2.forEach(function(element) { element.classList.remove("alienShip", "alienShip2", "alienShip3", "alienShip4") });
+  shield_1.forEach(function(element) { element.classList.remove("shieldP1", "shieldP2", "shieldP3") });
+  shield_2.forEach(function(element) { element.classList.remove("shieldP1", "shieldP2", "shieldP3") });
+  shield_3.forEach(function(element) { element.classList.remove("shieldP1", "shieldP2", "shieldP3") });
+  inGame.isIt_ = false;
+  inGame.aliensLines = [[true, true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true, true]];
+  inGame.shields = [[true, true, true], [true, true, true], [true, true, true]];
+  input.aliensLaserStatus = "none";
+  input.shuttleLaserStatus = "none";
+  pause();
+  setTimeout(function () {
+    gameOverElem.classList.remove("gameOver");
+  }, 3000);
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -223,12 +243,12 @@ function hittingAShield(alienOrShuttle, indexShield, indexPosition) {
   inGame.shields[indexShield][indexPosition] = false;
 };
 
-function hittingAShieldsBlock(alienOrShuttle, offset, indexShield, laserAxisX) {
-  if ((laserAxisX > (offset + 35) && laserAxisX < (offset + 75)) && inGame.shields[indexShield][1]) {
+function hittingShieldsBlock(alienOrShuttle, offset, indexShield, laserAxisX) {
+  if ((laserAxisX > (offset + (scaleSize2 * 4)) && laserAxisX < (offset + (scaleSize2 * 8))) && inGame.shields[indexShield][1]) {
     hittingAShield(alienOrShuttle, indexShield, 1);
-  } else if ((laserAxisX > offset && laserAxisX < (offset + 45)) && inGame.shields[indexShield][0]) {
+  } else if ((laserAxisX > offset && laserAxisX < (offset + (scaleSize2 * 5))) && inGame.shields[indexShield][0]) {
     hittingAShield(alienOrShuttle, indexShield, 0);
-  } else if ((laserAxisX > (offset + 70) && laserAxisX < (offset + 120)) && inGame.shields[indexShield][2]) {
+  } else if ((laserAxisX > (offset + (scaleSize2 * 7)) && laserAxisX < (offset + (scaleSize2 * 12))) && inGame.shields[indexShield][2]) {
     hittingAShield(alienOrShuttle, indexShield, 2);
   } else {
     if (alienOrShuttle == "alien")   {input.aliensLaserPhysicalStatus= "afterShields"};
@@ -238,27 +258,16 @@ function hittingAShieldsBlock(alienOrShuttle, offset, indexShield, laserAxisX) {
 
 /////////////////////////
 
-function aliensLaserOnShields() {
-  if (position.aliensLaserAxisX > 1152 && position.aliensLaserAxisX < 1272) {
-    hittingAShieldsBlock("alien", 1152, 2, position.aliensLaserAxisX);
-  } else if (position.aliensLaserAxisX > 632 && position.aliensLaserAxisX < 752) {
-    hittingAShieldsBlock("alien", 632, 1, position.aliensLaserAxisX);
-  } else if (position.aliensLaserAxisX > 112 && position.aliensLaserAxisX < 232) {
-    hittingAShieldsBlock("alien", 112, 0, position.aliensLaserAxisX);
+function laserOnShields(alienOrShuttle, laserPositionX) {
+  if (laserPositionX > (spaceAttackWidth - (scaleSize2 * 24)) && laserPositionX < (spaceAttackWidth - (scaleSize2 * 12))) {
+    hittingShieldsBlock(alienOrShuttle, (spaceAttackWidth - (scaleSize2 * 24)), 2, laserPositionX);
+  } else if (laserPositionX > ((spaceAttackWidth / 2) - (scaleSize2 * 6)) && laserPositionX < ((spaceAttackWidth / 2) + (scaleSize2 * 6))) {
+    hittingShieldsBlock(alienOrShuttle, ((spaceAttackWidth / 2) - (scaleSize2 * 6)), 1, laserPositionX);
+  } else if (laserPositionX > (scaleSize2 * 12) && laserPositionX < (scaleSize2 * 24)) {
+    hittingShieldsBlock(alienOrShuttle, (scaleSize2 * 12), 0, laserPositionX);
   } else {
-    input.aliensLaserPhysicalStatus = 'afterShields';
-  };
-};
-
-function shuttleLaserOnShields() {
-  if (position.shuttleLaserAxisX > 1152 && position.shuttleLaserAxisX < 1272) {
-    hittingAShieldsBlock("shuttle", 1152, 2, position.shuttleLaserAxisX);
-  } else if (position.shuttleLaserAxisX > 632 && position.shuttleLaserAxisX < 752) {
-    hittingAShieldsBlock("shuttle", 632, 1, position.shuttleLaserAxisX);
-  } else if (position.shuttleLaserAxisX > 112 && position.shuttleLaserAxisX < 232) {
-    hittingAShieldsBlock("shuttle", 112, 0, position.shuttleLaserAxisX);
-  } else {
-    input.shuttleLaserPhysicalStatus = 'afterShields';
+    if (alienOrShuttle == "alien")   {input.aliensLaserPhysicalStatus= "afterShields"};
+    if (alienOrShuttle == "shuttle") {input.shuttleLaserPhysicalStatus= "afterShields"};
   };
 };
 
@@ -286,10 +295,10 @@ function hittingAnAlien(aliensLine, alienPosition) {
   //twoAliensAreBack(aliensLine, alienPosition);
 };
 
-function shuttleLaserOnAliensLine(aliensElementOffset, shuttleLaserOffset, aliensLine) {
-  var laserOnAliensElement = (shuttleLaserOffset + 8) - aliensElementOffset;
-  var alienPosition = Math.floor(laserOnAliensElement / 100);
-  var laserPositionOnAlien = laserOnAliensElement % 100;
+function laserOnAliensLine(aliensElementOffset, shuttleLaserOffset, aliensLine) {
+  var laserOnAliensElement = shuttleLaserOffset - aliensElementOffset;
+  var alienPosition = Math.floor((laserOnAliensElement / scaleSize2) / 10);
+  var laserPositionOnAlien = Math.floor((laserOnAliensElement / scaleSize2) % 10) * 10;
   if (alienPosition == 0 && laserPositionOnAlien < 60 && inGame.aliensLines[aliensLine][alienPosition]) {
     hittingAnAlien(aliensLine, alienPosition);
   } else if (alienPosition == 1 && laserPositionOnAlien < 60 && inGame.aliensLines[aliensLine][alienPosition]) {
@@ -315,6 +324,18 @@ function shuttleLaserOnAliensLine(aliensElementOffset, shuttleLaserOffset, alien
   };
 };
 
+function laserOnShuttle(laserPositionX) {
+  if (laserPositionX > position.shuttleAxisX && laserPositionX < (position.shuttleAxisX + (scaleSize2 * 6))) {
+    aliensFireOff();
+    user.lives -= 1;
+    lives.innerHTML = user.lives;
+  };
+  if (user.lives == 0) {
+    shuttle.classList.remove("shuttle");
+    gameOver();
+  };
+};
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function startResume() {
@@ -324,9 +345,9 @@ function startResume() {
     levelText.classList.add("level");
     shuttle.classList.add("shuttle");
     gameTopTxt.classList.add("gameTopTxt");
-    lives.innerHTML = user.lives;
-    level.innerHTML = user.level;
-    score.innerHTML = user.score;
+    lives.innerHTML = user.lives = 6;
+    level.innerHTML = user.level = 1;
+    score.innerHTML = user.score = 0;
     setTimeout(function() {
       aliensEntry();
     }, 3000);
@@ -355,15 +376,15 @@ function startResume() {
     };
 
     if (position.shuttleLaserAxisY < (spaceAttackHeight - (scaleSize2 * 10)) && input.shuttleLaserPhysicalStatus == 'start') {
-      shuttleLaserOnShields();
+      laserOnShields("shuttle", position.shuttleLaserAxisX);
     };
 
     if (position.shuttleLaserAxisY < (scaleSize2 * 19) && input.shuttleLaserPhysicalStatus == 'afterShields') {
-      shuttleLaserOnAliensLine(position.aliensAxisX, position.shuttleLaserAxisX, 0);
+      laserOnAliensLine(position.aliensAxisX, position.shuttleLaserAxisX, 0);
     };
 
     if (position.shuttleLaserAxisY < (scaleSize2 * 11) && input.shuttleLaserPhysicalStatus == 'after1stAliensLine') {
-      shuttleLaserOnAliensLine(position.aliensAxisX, position.shuttleLaserAxisX, 1);
+      laserOnAliensLine(position.aliensAxisX, position.shuttleLaserAxisX, 1);
     };
 
     if (position.shuttleLaserAxisY <= 0) {
@@ -392,11 +413,15 @@ function startResume() {
       aliensLaser.style.setProperty("top", (position.aliensLaserAxisY + (scaleSize2 / 1.5)) + "px");
     };
 
-    if (position.aliensLaserAxisY > (spaceAttackHeight - (scaleSize2 * 10)) && input.aliensLaserPhysicalStatus == 'start') { //abs height of laser need to be change
-      aliensLaserOnShields();
+    if (position.aliensLaserAxisY > (spaceAttackHeight - (scaleSize2 * 12)) && input.aliensLaserPhysicalStatus == 'start') {
+      laserOnShields("alien", position.aliensLaserAxisX);
     };
 
-    if (position.aliensLaserAxisY >= spaceAttackHeight) {                                                                    //abs height of laser need to be change
+    if (position.aliensLaserAxisY > (spaceAttackHeight - (scaleSize2 * 6)) && input.aliensLaserPhysicalStatus == 'afterShields') {
+      laserOnShuttle(position.aliensLaserAxisX);
+    };
+
+    if (position.aliensLaserAxisY >= spaceAttackHeight) {
       aliensFireOff();
     };
   }, 5);
@@ -423,11 +448,11 @@ function onPlayPause() {
   if (input.gameStatus == 'inPause') {
     startResume();
     input.gameStatus = 'inPlay';
-    document.getElementById("startPause").innerHTML = 'Pause';
+    startPause.innerHTML = 'Pause';
   } else if (input.gameStatus == 'inPlay') {
     pause();
     input.gameStatus = 'inPause';
-    document.getElementById("startPause").innerHTML = 'Resume';
+    startPause.innerHTML = 'Resume';
   };
 }
 
@@ -452,21 +477,24 @@ function windowResize() {
   spaceAttack.style.cssText = `top: ${scaleSize1 * 15}px; left: ${scaleSize1}px; width: ${spaceAttackWidth}px; height: ${spaceAttackHeight}px; border: ${scaleSize1}px solid blue`;
   shellGameTopTxt.style.cssText = `top: ${scaleSize1 * 2}px`;
   levelText.style.cssText = `font-size: ${(scaleSize1 + 2) * 10}px`;
-  bottomCover.style.cssText = `top: ${spaceAttackHeight - scaleSize1}px`;
+  gameOverElem.style.cssText = `font-size: ${(scaleSize1 + 2) * 10}px`;
+  bottomCover.style.cssText = `top: ${spaceAttackHeight + scaleSize1}px`;
   topCover.style.cssText = `top: -${100 + scaleSize1}px`;
-  shuttle.style.cssText = `left: ${spaceAttackWidth / 2) - (scaleSize2 * 3)}px; width: ${scaleSize2 * 6}px; height: ${scaleSize2 * 6}px`
+  shuttle.style.cssText = `left: ${(spaceAttackWidth / 2) - (scaleSize2 * 3)}px; width: ${scaleSize2 * 6}px; height: ${scaleSize2 * 6}px`
   shellShuttle.style.cssText = `top: ${spaceAttackHeight - (scaleSize2 * 6)}px`;
   afterBurnRx.style.cssText = `width: ${scaleSize2 * 6}px; height: ${scaleSize2 * 3}px; top: ${scaleSize2}px; left: ${scaleSize2 * 6}px`;
   afterBurnLx.style.cssText = `width: ${scaleSize2 * 6}px; height: ${scaleSize2 * 3}px; top: ${scaleSize2}px; left: -${scaleSize2 * 6}px`;
   shields.style.cssText = `top: ${spaceAttackHeight - (scaleSize2 * 12)}px`;
   shieldsAll.forEach(function(element) { element.style.cssText = `width: ${scaleSize2 * 12}px; height: ${scaleSize2 * 4}px` });
   shield1.style.cssText = `left: ${scaleSize2 * 12}px`;
-  shield2.style.cssText = `left: ${spaceAttackWidth / 2) - scaleSize2 * 6}px`;
+  shield2.style.cssText = `left: ${(spaceAttackWidth / 2) - (scaleSize2 * 6)}px`;
   shield3.style.cssText = `left: ${spaceAttackWidth - (scaleSize2 * 24)}px`;
   aliens.style.cssText = `top: ${scaleSize2 * 3}px; left: ${scaleSize2 * 3}px; width: ${scaleSize2 * 96}px; height: ${scaleSize2 * 16}px`;
   aliensLine1.style.cssText = `top: ${scaleSize2 * 8}px`;
   aliensLine_1.forEach(function(element, position) { element.style.cssText = `left: ${scaleSize2 * (position * 10)}px; width: ${scaleSize2 * 6}px; height: ${scaleSize2 * 8}px` });
   aliensLine_2.forEach(function(element, position) { element.style.cssText = `left: ${scaleSize2 * (position * 10)}px; width: ${scaleSize2 * 6}px; height: ${scaleSize2 * 8}px` });
+  shuttleLaser.style.cssText = `top: ${spaceAttackHeight - (scaleSize2 * 8)}px; width: ${scaleSize2 * 2}px; height: ${scaleSize2 * 4}px`;
+  aliensLaser.style.cssText = `width: ${scaleSize2 * 2}px; height: ${scaleSize2 * 4}px`;
 };
 windowResize();
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -486,6 +514,8 @@ document.addEventListener("keydown", function(event) {
     };
   } else if (event.keyCode == 80) {
     onPlayPause();
+  } else if (event.keyCode == 81) {
+    gameOver();
   };
 });
 
