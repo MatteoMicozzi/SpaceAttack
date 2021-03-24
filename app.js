@@ -86,11 +86,11 @@ var inGame = {
 
 var game = {
   counter : 0,
-  level_1 : 20,
-  level_2 : 30,
-  level_3 : 40,
-  level_4 : 50,
-  level_5 : 80,
+  level_1 : 0,
+  level_2 : 5,
+  level_3 : 10,
+  level_4 : 15,
+  level_5 : 80, // monster
   level_6 : 20,
   level_7 : 40,
   level_8 : 60,
@@ -182,9 +182,12 @@ function shuttleFireOff() {
 
 function gameOver() {
   gameOverElem.classList.add("gameOver");
-  startPause.innerHTML = "Play";
+  startPause.innerHTML = "Start";
+  gameTopTxt.classList.remove("gameTopTxt");
+  shuttle.classList.remove("shuttle");
   aliensLine_1.forEach(function(element) { element.classList.remove("alienShip", "alienShip2", "alienShip3", "alienShip4") });
   aliensLine_2.forEach(function(element) { element.classList.remove("alienShip", "alienShip2", "alienShip3", "alienShip4") });
+  aliensLaser.classList.remove("aliensLaser");
   shield_1.forEach(function(element) { element.classList.remove("shieldP1", "shieldP2", "shieldP3") });
   shield_2.forEach(function(element) { element.classList.remove("shieldP1", "shieldP2", "shieldP3") });
   shield_3.forEach(function(element) { element.classList.remove("shieldP1", "shieldP2", "shieldP3") });
@@ -193,6 +196,7 @@ function gameOver() {
   inGame.shields = [[true, true, true], [true, true, true], [true, true, true]];
   input.aliensLaserStatus = "none";
   input.shuttleLaserStatus = "none";
+  input.gameStatus = "inPause";
   pause();
   setTimeout(function () {
     gameOverElem.classList.remove("gameOver");
