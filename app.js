@@ -93,7 +93,7 @@ function reset() {
 
   game = {
     counter : 0,
-    aliensReentryByLevel : [0, 5, 10, 15, 0, 10, 20, 30, 10, 20, 40, 80],
+    aliensReentryByLevel : [0, 5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 80],
     monsterLevel : [80, 160, 360]
   };
 };
