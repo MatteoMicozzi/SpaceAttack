@@ -495,10 +495,10 @@ function windowResize() {
   startPause.style.cssText = `font-size: ${scaleSize1 * 3}px; top: ${scaleSize1 * 9}px`;
   menu.style.cssText = `top: ${scaleSize1}px; left: ${scaleSize1}px; width: ${spaceAttackWidth}px; height: ${scaleSize1 * 13}px; border: ${scaleSize1}px solid blue`;
   spaceAttack.style.cssText = `top: ${scaleSize1 * 15}px; left: ${scaleSize1}px; width: ${spaceAttackWidth}px; height: ${spaceAttackHeight}px; border: ${scaleSize1}px solid blue`;
-  touchFire.style.cssText = `top: ${spaceAttackHeight / 2}px; left: ${spaceAttackWidth / 2}px; width: ${spaceAttackWidth / 2}px; height: ${spaceAttackHeight / 2}`;
-  touchMove.style.cssText = `top: ${spaceAttackHeight / 2}px; left: 0px; width: ${spaceAttackWidth / 2}px; height: ${spaceAttackHeight / 2}`;
-  touchStartPause.style.cssText = `top: 0px; left: ${spaceAttackWidth / 2}px; width: ${spaceAttackWidth / 2}px; height: ${spaceAttackHeight / 2}`;
-  touchQuit.style.cssText = `top: 0px; left: 0px; width: ${spaceAttackWidth / 2}px; height: ${spaceAttackHeight / 2}`;
+  touchFire.style.cssText = `top: ${spaceAttackHeight / 2}px; left: ${spaceAttackWidth / 2}px; width: ${spaceAttackWidth / 2}px; height: ${spaceAttackHeight / 2}px`;
+  touchMove.style.cssText = `top: ${spaceAttackHeight / 2}px; left: 0px; width: ${spaceAttackWidth / 2}px; height: ${spaceAttackHeight / 2}px`;
+  touchStartPause.style.cssText = `top: 0px; left: ${spaceAttackWidth / 2}px; width: ${spaceAttackWidth / 2}px; height: ${spaceAttackHeight / 2}px`;
+  touchQuit.style.cssText = `top: 0px; left: 0px; width: ${spaceAttackWidth / 2}px; height: ${spaceAttackHeight / 2}px`;
   shellGameTopTxt.style.cssText = `top: ${scaleSize1 * 2}px`;
   centerTxt.style.cssText = `font-size: ${(scaleSize1 + 2) * 10}px`;
   bottomCover.style.cssText = `top: ${spaceAttackHeight + scaleSize1}px`;
