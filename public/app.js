@@ -1,28 +1,26 @@
-var body = document.getElementById("body");
-var menu = document.getElementById("menu");
-var title = document.getElementById("title");
-var startPause = document.getElementById("startPause");
-var touchStartPause = document.getElementById("touchStartPause");
-var touchQuit = document.getElementById("touchQuit");
-var touchFire = document.getElementById("touchFire");
-var touchMove = document.getElementById("touchMove");
-var spaceAttack = document.getElementById("spaceAttack");
-var shellGameTopTxt = document.getElementById("shellGameTopTxt");
-var shellShuttle = document.getElementById("shellShuttle");
-var topCover = document.getElementById("topCover");
-var bottomCover = document.getElementById("bottomCover");
+var body = document.querySelector("#body");
+var menu = document.querySelector("#menu");
+var title = document.querySelector("#title");
+var startPause = document.querySelector("#startPause");
+var touchStartPause = document.querySelector("#touchStartPause");
+var touchQuit = document.querySelector("#touchQuit");
+var touchFire = document.querySelector("#touchFire");
+var touchMove = document.querySelector("#touchMove");
+var spaceAttack = document.querySelector("#spaceAttack");
+var shellGameTopTxt = document.querySelector("#shellGameTopTxt");
+var shellShuttle = document.querySelector("#shellShuttle");
+var topCover = document.querySelector("#topCover");
+var bottomCover = document.querySelector("#bottomCover");
 
-var centerTxt = document.getElementById("centerText");
-var gameTopTxt = document.getElementById("gameTopTxt");
-var lives = document.getElementById("lives");
-var level = document.getElementById("level");
-var score = document.getElementById("score");
-var shuttle = document.getElementById("shuttle");
-var afterBurnRx = document.getElementById("afterBurnRx");
-var afterBurnLx = document.getElementById("afterBurnLx");
-var shuttleLaser = document.getElementById("shuttleLaser");
-var aliens = document.getElementById("aliens");
-var aliensLaser = document.getElementById("aliensLaser");
+var centerTxt = document.querySelector("#centerText");
+var gameTopTxt = document.querySelector("#gameTopTxt");
+var lives = document.querySelector("#lives");
+var level = document.querySelector("#level");
+var score = document.querySelector("#score");
+var shuttle = document.querySelector("#shuttle");
+var shuttleLaser = document.querySelector("#shuttleLaser");
+var aliens = document.querySelector("#aliens");
+var aliensLaser = document.querySelector("#aliensLaser");
 
 var shields = document.querySelector("#shields");
 var shieldsAll = document.querySelectorAll("#s1Part1, #s1Part2, #s1Part3, #s2Part1, #s2Part2, #s2Part3, #s3Part1, #s3Part2, #s3Part3");
@@ -50,6 +48,8 @@ var aliensLaserPrefireLogic;
 var availabilityOfAliens;
 var activeAliensLine1;
 var activeAliensLine2;
+var touchMoveX1;
+var touchMoveX2;
 
 var input;
 var position;
@@ -181,7 +181,7 @@ function endOfLevel(endingAs) {
     centerTxt.innerHTML = "GAME OVER";
     reset();
   } else if (endingAs == "quit") {
-    centerTxt.innerHTML = "Quitting..."
+    centerTxt.innerHTML = "YOU LEFT"
     reset();
   };
   centerTxt.classList.add("endOfLevel");
@@ -470,15 +470,40 @@ function onPlayPause() {
 }
 
 startPause.addEventListener("click", onPlayPause);
-touchStartPause.addEventListener("touchstart", onPlayPause);
-touchFire.addEventListener("touchstart", function() {
+touchStartPause.ontouchstart = function() {
+  onPlayPause();
+  return false;
+};
+touchFire.ontouchstart = function() {
   if (input.shuttleLaserStatus == 'off') {
-    shuttleFireOn()
+    shuttleFireOn();
   };
-});
-touchQuit.addEventListener("touchstart", function() {
+  return false;
+};
+touchQuit.ontouchstart = function() {
   endOfLevel("quit");
-});
+  return false;
+};
+touchMove.ontouchstart = function(event) {
+  touchMoveX1 = event.touches[0].clientX;
+  return false;
+};
+touchMove.ontouchmove = function(event) {
+  touchMoveX2 = event.touches[0].clientX;
+  if (touchMoveX1 > touchMoveX2) {
+    input.rightKey = 'up';
+    input.leftKey = 'down';
+  } else {
+    input.rightKey = 'down';
+    input.leftKey = 'up';
+  };
+  return false;
+};
+touchMove.ontouchend = function() {
+  input.rightKey = 'up';
+  input.leftKey = 'up';
+  return false;
+};
 
 function windowResize() {
   windowInWidth = window.innerWidth;
@@ -505,8 +530,6 @@ function windowResize() {
   topCover.style.cssText = `top: -${100 + scaleSize1}px`;
   shuttle.style.cssText = `left: ${(spaceAttackWidth / 2) - (scaleSize2 * 3)}px; width: ${scaleSize2 * 6}px; height: ${scaleSize2 * 6}px`
   shellShuttle.style.cssText = `top: ${spaceAttackHeight - (scaleSize2 * 6)}px`;
-  afterBurnRx.style.cssText = `width: ${scaleSize2 * 6}px; height: ${scaleSize2 * 3}px; top: ${scaleSize2}px; left: ${scaleSize2 * 6}px`;
-  afterBurnLx.style.cssText = `width: ${scaleSize2 * 6}px; height: ${scaleSize2 * 3}px; top: ${scaleSize2}px; left: -${scaleSize2 * 6}px`;
   shields.style.cssText = `top: ${spaceAttackHeight - (scaleSize2 * 12)}px`;
   shieldsAll.forEach(function(element) { element.style.cssText = `width: ${scaleSize2 * 12}px; height: ${scaleSize2 * 4}px` });
   shield1.style.cssText = `left: ${scaleSize2 * 12}px`;
@@ -527,10 +550,8 @@ window.addEventListener('resize', windowResize);
 document.addEventListener("keydown", function(event) {
   if (event.keyCode == 39) {
     input.rightKey = 'down';
-    afterBurnLx.classList.add("afterBurnLx");
   } else if (event.keyCode == 37) {
     input.leftKey = 'down';
-    afterBurnRx.classList.add("afterBurnRx");
   } else if (event.keyCode == 32) {
     if (input.shuttleLaserStatus == 'off') {
       shuttleFireOn();
@@ -545,10 +566,8 @@ document.addEventListener("keydown", function(event) {
 document.addEventListener("keyup", function(event) {
   if (event.keyCode == 39) {
     input.rightKey = 'up';
-    afterBurnLx.classList.remove("afterBurnLx");
   };
   if (event.keyCode == 37) {
     input.leftKey = 'up';
-    afterBurnRx.classList.remove("afterBurnRx");
   };
 });

@@ -30,6 +30,7 @@
 
 #touchFire, #touchMove, #touchStartPause, #touchQuit {
   position: absolute;
+  touch-action: none;
   z-index: 10;
 }
 
@@ -75,6 +76,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   color: transparent;
 }
 .centerText {
@@ -105,14 +107,6 @@
   background-size: contain;
   z-index: 3;
 }
-#afterBurnRx {
-  position: absolute;
-  background-size: contain;
-}
-#afterBurnLx {
-  position: absolute;
-  background-size: contain;
-}
 .shuttle {
   background-image: url("./img/shuttle.tiff");
   animation: shuttle 3.5s ease-out;
@@ -121,12 +115,6 @@
   0%{top: 200px;}
   90%{top: 200px;}
   100%{top: 0px;}
-}
-.afterBurnRx {
-  background-image: url("./img/afterBurnRx.tiff");
-}
-.afterBurnLx {
-  background-image: url("./img/afterBurnLx.tiff");
 }
 #shuttleLaser {
   position: absolute;
