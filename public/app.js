@@ -197,6 +197,9 @@ function endOfLevel(endingAs) {
   shield_3.forEach(function(element) { element.classList.remove("shieldP1", "shieldP2", "shieldP3") });
   setTimeout(function () {
     centerTxt.classList.remove("endOfLevel", "centerText");
+    if (endingAs == "nextLevel") {
+      onPlayPause();
+    };
   }, 3000);
 };
 
