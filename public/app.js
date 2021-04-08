@@ -488,11 +488,11 @@ touchQuit.ontouchstart = function() {
   return false;
 };
 touchMove.ontouchstart = function(event) {
-  touchMoveX1 = event.touches[0].clientX;
+  (event.touches[0].clientX < (windowInWidth / 2)) ? touchMoveX1 = event.touches[0].clientX : touchMoveX1 = event.touches[1].clientX;
   return false;
 };
 touchMove.ontouchmove = function(event) {
-  touchMoveX2 = event.touches[0].clientX;
+  (event.touches[0].clientX < (windowInWidth / 2)) ? touchMoveX2 = event.touches[0].clientX : touchMoveX2 = event.touches[1].clientX;
   if (touchMoveX1 > touchMoveX2) {
     input.rightKey = 'up';
     input.leftKey = 'down';
