@@ -188,6 +188,7 @@ function endOfLevel(endingAs) {
   startPause.innerHTML = "Start";
   gameTopTxt.classList.remove("gameTopTxt");
   shuttle.classList.remove("shuttle");
+  shuttle.style.setProperty("left", ((spaceAttackWidth / 2) - (scaleSize2 * 3)) + "px");
   aliensLine_1.forEach(function(element) { element.classList.remove("alienShip", "alienShip1", "alienShip2", "alienShip3", "alienShip4") });
   aliensLine_2.forEach(function(element) { element.classList.remove("alienShip", "alienShip1", "alienShip2", "alienShip3", "alienShip4") });
   aliensLaser.classList.remove("aliensLaser");
