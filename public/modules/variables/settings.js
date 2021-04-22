@@ -11,7 +11,7 @@ function reset() {
     leftKey: 'up',
     shuttleLaserStatus: 'none',
     shuttleLaserPhysicalStatus: 'start',
-    aliensAvailability: '',
+    aliensAvailableIn: '',
     aliensDirection: 'right',
     aliensLaserStatus: 'none',
     aliensLaserPhysicalStatus: 'start'
@@ -39,7 +39,7 @@ function reset() {
     aliensLines: [[true, true, true, true, true, true, true, true, true, true],
                   [true, true, true, true, true, true, true, true, true, true]],
     monsterLives: 0,
-    isIt_: false
+    isNot: true
   };
 
   game = {

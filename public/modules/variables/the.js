@@ -8,7 +8,7 @@ var the = {
   shuttleLogic: null,
   aliensLogic: null,
   lasersActivation: null,
-  aliensLaserPrefireLogic: null,
+  aliensPrefireLogic: null,
   availabilityOfAliens: null,
   activeAliensLine1: null,
   activeAliensLine2: null,
