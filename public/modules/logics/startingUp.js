@@ -1,5 +1,5 @@
 function lasersActivation() {
-  the.lasersActivation = setTimeout(function() {
+  setTimeout(function() {
     input.aliensLaserStatus = 'off';
     input.shuttleLaserStatus = 'off';
   }, 5000);

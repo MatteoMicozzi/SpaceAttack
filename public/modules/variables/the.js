@@ -7,7 +7,6 @@ var the = {
   scaleSize2: null,
   shuttleLogic: null,
   aliensLogic: null,
-  lasersActivation: null,
   aliensPrefireLogic: null,
   availabilityOfAliens: null,
   activeAliensLine1: null,
