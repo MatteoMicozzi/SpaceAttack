@@ -48,3 +48,4 @@ function reset() {
     monsterLevel: [80, 160, 360]
   };
 };
+reset();

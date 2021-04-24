@@ -35,3 +35,5 @@ function windowResize() {
   element.shuttleLaser.style.cssText = `top: ${the.spaceAttackHeight - (the.scaleSize2 * 8)}px; width: ${the.scaleSize2 * 2}px; height: ${the.scaleSize2 * 4}px`;
   element.aliensLaser.style.cssText = `width: ${the.scaleSize2 * 2}px; height: ${the.scaleSize2 * 4}px`;
 };
+windowResize();
+window.addEventListener('resize', windowResize);
