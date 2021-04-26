@@ -9,18 +9,18 @@ function endingAs(status) {
 };
 
 function resettingElements() {
-  element.centerTxt.classList.add("endOfLevel");
+  element.centerTxt.classList.add("anim_endOfLevel");
   element.startPause.innerHTML = "Start";
-  element.gameTopTxt.classList.remove("gameTopTxt");
-  element.shuttle.classList.remove("shuttle");
+  element.gameTopTxt.classList.remove("anim_gameTopTxt");
+  element.shuttle.classList.remove("anim_shuttle");
   element.shuttle.style.setProperty("left", ((the.spaceAttackWidth / 2) - (the.scaleSize2 * 3)) + "px");
-  element.aliensLine_1.forEach(function(element) { element.classList.remove("alienShip", "alienShip1", "alienShip2", "alienShip3", "alienShip4") });
-  element.aliensLine_2.forEach(function(element) { element.classList.remove("alienShip", "alienShip1", "alienShip2", "alienShip3", "alienShip4") });
-  element.aliensLaser.classList.remove("aliensLaser");
-  element.shuttleLaser.classList.remove("shuttleLaser");
-  element.shield_1.forEach(function(element) { element.classList.remove("shieldP1", "shieldP2", "shieldP3") });
-  element.shield_2.forEach(function(element) { element.classList.remove("shieldP1", "shieldP2", "shieldP3") });
-  element.shield_3.forEach(function(element) { element.classList.remove("shieldP1", "shieldP2", "shieldP3") });
+  element.aliensLine_1.forEach(function(element) { element.classList.remove("anim_alienShip", "anim_alienShip1", "anim_alienShip2", "anim_alienShip3", "anim_alienShip4") });
+  element.aliensLine_2.forEach(function(element) { element.classList.remove("anim_alienShip", "anim_alienShip1", "anim_alienShip2", "anim_alienShip3", "anim_alienShip4") });
+  element.aliensLaser.classList.remove("anim_aliensLaser");
+  element.shuttleLaser.classList.remove("anim_shuttleLaser");
+  element.shield_1.forEach(function(element) { element.classList.remove("anim_shieldP1", "anim_shieldP2", "anim_shieldP3") });
+  element.shield_2.forEach(function(element) { element.classList.remove("anim_shieldP1", "anim_shieldP2", "anim_shieldP3") });
+  element.shield_3.forEach(function(element) { element.classList.remove("anim_shieldP1", "anim_shieldP2", "anim_shieldP3") });
 }
 
 function endOfLevel(status) {
@@ -28,7 +28,7 @@ function endOfLevel(status) {
   endingAs(status);
   resettingElements();
   setTimeout(function () {
-    element.centerTxt.classList.remove("endOfLevel", "centerText");
+    element.centerTxt.classList.remove("anim_endOfLevel", "anim_centerText");
     if (status == "NEXT LEVEL") { onPlayPause() };
   }, 3000);
 };

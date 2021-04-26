@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" >
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Arcade game SPACE ATTACK!">
+    <meta name="author" content="Matteo Micozzi">
+    <meta name="keywords" content="Arcade, Game, Space Invaders, Tetris, Pacman">
+    <link rel="stylesheet" href="spaceAttack!.css"></link>
+    <title>SPACE ATTACK!</title>
+  </head>
+
+  <body class="body">
+    <div class="menu">
+      <div class="topCover"></div>
+      <div class="title">SPACE ATTACK!</div>
+      <div class="startPause">Start</div>
+    </div>
+    <div class="spaceAttack">
+      <div class="shellGameTopTxt">
+        <div class="gameTopTxt">
+          <div class="livesTxt">Lives: <span class="lives"></span></div>
+          <div class="levelTxt">Level: <span class="level"></span></div>
+          <div class="scoreTxt">Score: <span class="score"></span></div>
+        </div>
+      </div>
+
+      <div class="centerText"></div>
+
+      <div class="touchMove"></div>
+      <div class="touchFire"></div>
+      <div class="touchStartPause"></div>
+      <div class="touchQuit"></div>
+
+      <div class="shellShuttle">
+        <div class="shuttle"></div>
+      </div>
+
+      <div class="shuttleLaser"></div>
+
+      <div class="shields">
+        <div class="shield1">
+          <div class="s1Part1"></div>
+          <div class="s1Part2"></div>
+          <div class="s1Part3"></div>
+        </div>
+        <div class="shield2">
+          <div class="s2Part1"></div>
+          <div class="s2Part2"></div>
+          <div class="s2Part3"></div>
+        </div>
+        <div class="shield3">
+          <div class="s3Part1"></div>
+          <div class="s3Part2"></div>
+          <div class="s3Part3"></div>
+        </div>
+      </div>
+
+      <div class="aliens">
+        <div class="line2">
+          <div class="part1"></div>
+          <div class="part2"></div>
+          <div class="part3"></div>
+          <div class="part4"></div>
+          <div class="part5"></div>
+          <div class="part6"></div>
+          <div class="part7"></div>
+          <div class="part8"></div>
+          <div class="part9"></div>
+          <div class="part10"></div>
+        </div>
+
+        <div class="line1">
+          <div class="part1"></div>
+          <div class="part2"></div>
+          <div class="part3"></div>
+          <div class="part4"></div>
+          <div class="part5"></div>
+          <div class="part6"></div>
+          <div class="part7"></div>
+          <div class="part8"></div>
+          <div class="part9"></div>
+          <div class="part10"></div>
+        </div>
+      </div>
+
+      <div class="aliensLaser"></div>
+
+      <div class="monster"></div>
+
+      <div class="bottomCover"></div>
+    </div>
+
+  <script src="./modules/variables/elements.js"></script>
+  <script src="./modules/variables/the.js"></script>
+  <script src="./modules/variables/settings.js"></script>
+  <script src="./modules/animations/aliensEntry.js"></script>
+  <script src="./modules/animations/shieldsEntry.js"></script>
+  <script src="./modules/functions/randomAlienFire.js"></script>
+  <script src="./modules/functions/fireOn_fireOff.js"></script>
+  <script src="./modules/functions/endOfLevel.js"></script>
+  <script src="./modules/functions/laserOnAliens.js"></script>
+  <script src="./modules/functions/laserOnShields.js"></script>
+  <script src="./modules/functions/laserOnShuttle.js"></script>
+  <script src="./modules/logics/aliensLogic.js"></script>
+  <script src="./modules/logics/aliensPreFireLogic.js"></script>
+  <script src="./modules/logics/shuttleLogic.js"></script>
+  <script src="./modules/logics/availabilityOfAliens.js"></script>
+  <script src="./modules/logics/startingUp.js"></script>
+  <script src="./modules/logics/startResume.js"></script>
+  <script src="./modules/logics/pause.js"></script>
+  <script src="./modules/logics/onPlayPause.js"></script>
+  <script src="./modules/eventListeners/windowResize.js"></script>
+  <script src="./modules/eventListeners/touch.js"></script>
+  <script src="./modules/eventListeners/click.js"></script>
+  <script src="./modules/eventListeners/key.js"></script>
+
+  <script>
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBXV9pfiFneJPmBWq5XPHDm3s3E7DBhum4",
+      authDomain: "matteo-games.firebaseapp.com",
+      projectId: "matteo-games",
+      storageBucket: "matteo-games.appspot.com",
+      messagingSenderId: "564154905050",
+      appId: "1:564154905050:web:c1ab560c105a0ae9d350e3",
+      measurementId: "G-V8RWV2Z00E"
+    };
+  </script>
+  </body>
+</html>

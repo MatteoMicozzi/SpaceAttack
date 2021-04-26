@@ -6,8 +6,8 @@ function twoAliensAreBack(aliensLine, alienPosition) {
   if (otherAlienIsDead && reentriesIsYetToComplete) {
     game.counter += 1;
     setTimeout(function() {
-      element.aliensLines[aliensLine][alienPosition].classList.add("alienShip");
-      element.aliensLines[otherAliensLine][alienPosition].classList.add("alienShip");
+      element.aliensLines[aliensLine][alienPosition].classList.add("anim_alienShip");
+      element.aliensLines[otherAliensLine][alienPosition].classList.add("anim_alienShip");
 
       setTimeout(function() {
         inGame.aliensLines[aliensLine][alienPosition] = true;
@@ -19,7 +19,7 @@ function twoAliensAreBack(aliensLine, alienPosition) {
 
 function hittingAnAlien(aliensLine, alienPosition) {
   inGame.aliensLines[aliensLine][alienPosition] = false;
-  element.aliensLines[aliensLine][alienPosition].classList.remove("alienShip", "alienShip1", "alienShip2", "alienShip3", "alienShip4");
+  element.aliensLines[aliensLine][alienPosition].classList.remove("anim_alienShip", "anim_alienShip1", "anim_alienShip2", "anim_alienShip3", "anim_alienShip4");
   shuttleFireOff();
   user.score += 1;
   element.score.innerHTML = user.score;

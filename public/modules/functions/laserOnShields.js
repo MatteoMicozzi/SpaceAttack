@@ -1,7 +1,7 @@
 function removeAShield(indexShieldsBlock, indexShield) {
-  if (indexShieldsBlock == 0) {element.shield_1[indexShield].classList.remove("shieldP1", "shieldP2", "shieldP3")};
-  if (indexShieldsBlock == 1) {element.shield_2[indexShield].classList.remove("shieldP1", "shieldP2", "shieldP3")};
-  if (indexShieldsBlock == 2) {element.shield_3[indexShield].classList.remove("shieldP1", "shieldP2", "shieldP3")};
+  if (indexShieldsBlock == 0) {element.shield_1[indexShield].classList.remove("anim_shieldP1", "anim_shieldP2", "anim_shieldP3")};
+  if (indexShieldsBlock == 1) {element.shield_2[indexShield].classList.remove("anim_shieldP1", "anim_shieldP2", "anim_shieldP3")};
+  if (indexShieldsBlock == 2) {element.shield_3[indexShield].classList.remove("anim_shieldP1", "anim_shieldP2", "anim_shieldP3")};
 };
 
 function hittingAShield(alienOrShuttle, indexShieldsBlock, indexShield) {

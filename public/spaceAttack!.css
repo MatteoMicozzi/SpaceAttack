@@ -1,52 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-#body {
+.body {
   background-color: black;
   color: limegreen;
   font-family: 'Press Start 2P', cursive;
   overflow: hidden;
 }
-#menu {
+.menu {
   position: absolute;
   background-color: black;
   z-index: 10;
 }
-#title {
+.title {
   position: absolute;
   width: 100%;
   text-align: center;
 }
-#startPause {
+.startPause {
   position: absolute;
   width: 100%;
   text-align: center;
   cursor: pointer;
 }
 
-#spaceAttack {
+.spaceAttack {
   position: absolute;
   width: 1400px;
   height: 700px;
   background-image: url("./img/background.jpg");
 }
 
-#touchFire, #touchMove, #touchStartPause, #touchQuit {
+.touchFire, .touchMove, .touchStartPause, .touchQuit {
   position: absolute;
   touch-action: none;
   z-index: 10;
 }
 
-#shellGameTopTxt {
+.shellGameTopTxt {
   position: absolute;
   width: 100%;
 }
-#gameTopTxt {
+.gameTopTxt {
   position: absolute;
   width: 100%;
   color: transparent;
   z-index: 8;
 }
-.gameTopTxt {
+.anim_gameTopTxt {
   animation: gameTopTxt 6s ease-out;
   animation-fill-mode: forwards;
 }
@@ -55,23 +55,23 @@
   80%{top: -300px; color: inherit;}
   100%{top: 0px; color: inherit;}
 }
-#livesTxt {
+.livesTxt {
   position: absolute;
   left: 20px;
 }
-#levelTxt {
+.levelTxt {
   position: absolute;
   width: 100%;
   text-align: center;
 }
-#scoreTxt {
+.scoreTxt {
   position: absolute;
   width: 100%;
   text-align: right;
   right: 20px;
 }
 
-#centerText {
+.centerText {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -81,7 +81,7 @@
   text-align: center;
   color: transparent;
 }
-.centerText {
+.anim_centerText {
   animation: centerText 2s ease;
 }
 @keyframes centerText {
@@ -90,7 +90,7 @@
   80%{color: inherit;}
   100%{color: transparent;}
 }
-.endOfLevel {
+.anim_endOfLevel {
   animation: endOfLevel 3s ease;
 }
 @keyframes endOfLevel {
@@ -100,16 +100,16 @@
   100%{color: transparent;}
 }
 
-#shellShuttle {
+.shellShuttle {
   position: absolute;
   width: 100%;
 }
-#shuttle {
+.shuttle {
   position: absolute;
   background-size: contain;
   z-index: 3;
 }
-.shuttle {
+.anim_shuttle {
   background-image: url("./img/shuttle.tiff");
   animation: shuttle 3.5s ease-out;
 }
@@ -118,47 +118,47 @@
   90%{top: 200px;}
   100%{top: 0px;}
 }
-#shuttleLaser {
+.shuttleLaser {
   position: absolute;
   background-size: contain;
   left: 1px;
   z-index: 1;
 }
-.shuttleLaser {
+.anim_shuttleLaser {
   background-image: url("./img/blueLaser.tiff");
 }
-#aliensLaser {
+.aliensLaser {
   position: absolute;
   background-size: contain;
   left: 1px;
   top: 1px;
   z-index: 1;
 }
-.aliensLaser {
+.anim_aliensLaser {
   background-image: url("./img/redLaser.tiff");
 }
 
-#shields {
+.shields {
   position: absolute;
   width: 100%;
 }
-#shield1, #shield2, #shield3 {
+.shield1, .shield2, .shield3 {
   position: absolute;
 }
-#s1Part1, #s1Part2, #s1Part3, #s2Part1, #s2Part2, #s2Part3, #s3Part1, #s3Part2, #s3Part3 {
+.s1Part1, .s1Part2, .s1Part3, .s2Part1, .s2Part2, .s2Part3, .s3Part1, .s3Part2, .s3Part3 {
   position: absolute;
   background-size: contain;
   z-index: 2;
 }
-.shieldP1 {
+.anim_shieldP1 {
   background-image: url("./img/sp1.tiff");
   animation: shield 2s ease-out;
 }
-.shieldP2 {
+.anim_shieldP2 {
   background-image: url("./img/sp2.tiff");
   animation: shield 3s ease-out;
 }
-.shieldP3 {
+.anim_shieldP3 {
   background-image: url("./img/sp3.tiff");
   animation: shield 2.5s ease-out;
 }
@@ -169,34 +169,34 @@
 }
 
 
-#aliens {
+.aliens {
   position: absolute;
 }
-#line1, #line2 {
+.line1, .line2 {
   position: absolute;
 }
-#part1, #part2, #part3, #part4, #part5, #part6, #part7, #part8, #part9, #part10 {
+.part1, .part2, .part3, .part4, .part5, .part6, .part7, .part8, .part9, .part10 {
   position: absolute;
   background-size: contain;
   z-index: 2;
 }
-.alienShip {
+.anim_alienShip {
   background-image: url("./img/alienShip2.tiff");
   animation: alienShipBack 1.2s ease-out;
 }
-.alienShip1 {
+.anim_alienShip1 {
   background-image: url("./img/alienShip2.tiff");
   animation: alienShip 4.2s ease-out;
 }
-.alienShip2 {
+.anim_alienShip2 {
   background-image: url("./img/alienShip2.tiff");
   animation: alienShip 4.5s ease-out;
 }
-.alienShip3 {
+.anim_alienShip3 {
   background-image: url("./img/alienShip2.tiff");
   animation: alienShip 4.6s ease-out;
 }
-.alienShip4 {
+.anim_alienShip4 {
   background-image: url("./img/alienShip2.tiff");
   animation: alienShip 4.7s ease-out;
 }
@@ -210,42 +210,42 @@
   94%{top: -300px;}
   100%{top: 0px;}
 }
-#part2 {
+.part2 {
   left: 100px;
 }
-#part3 {
+.part3 {
   left: 200px;
 }
-#part4 {
+.part4 {
   left: 300px;
 }
-#part5 {
+.part5 {
   left: 400px;
 }
-#part6 {
+.part6 {
   left: 500px;
 }
-#part7 {
+.part7 {
   left: 600px;
 }
-#part8 {
+.part8 {
   left: 700px;
 }
-#part9 {
+.part9 {
   left: 800px;
 }
-#part10 {
+.part10 {
   left: 900px;
 }
 
-#topCover {
+.topCover {
   position: absolute;
   width: 100%;
   height: 100px;
   background-color: black;
   z-index: 9;
 }
-#bottomCover {
+.bottomCover {
   position: absolute;
   width: 100%;
   height: 400px;

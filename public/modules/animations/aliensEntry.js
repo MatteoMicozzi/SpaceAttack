@@ -1,12 +1,12 @@
 function aliensPreIn(element, index) {
   if (index == 4) {
-    element = element.classList.add("alienShip1");
+    element = element.classList.add("anim_alienShip1");
   } else if (index == 3 || index == 5 || index == 6) {
-    element = element.classList.add("alienShip2");
+    element = element.classList.add("anim_alienShip2");
   } else if (index == 1 || index == 2 || index == 7) {
-    element = element.classList.add("alienShip3");
+    element = element.classList.add("anim_alienShip3");
   } else if (index == 0 || index == 8 || index == 9) {
-    element = element.classList.add("alienShip4");
+    element = element.classList.add("anim_alienShip4");
   };
 };
 

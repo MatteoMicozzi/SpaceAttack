@@ -14,9 +14,9 @@ function startingUp() {
     element.score.innerHTML = user.score;
     element.level.innerHTML = user.level;
     element.centerTxt.innerHTML = `LEVEL ${user.level}`;
-    element.centerTxt.classList.add("centerText");
-    element.shuttle.classList.add("shuttle");
-    element.gameTopTxt.classList.add("gameTopTxt");
+    element.centerTxt.classList.add("anim_centerText");
+    element.shuttle.classList.add("anim_shuttle");
+    element.gameTopTxt.classList.add("anim_gameTopTxt");
     inGame.isNot = false;
   };
 };
