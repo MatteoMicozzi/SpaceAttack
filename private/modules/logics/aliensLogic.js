@@ -3,8 +3,7 @@ function aliensLogic() {
     position.aliensAxisX = parseInt(window.getComputedStyle(element.aliens).getPropertyValue("left"));
     position.aliensLaserAxisY = parseInt(window.getComputedStyle(element.aliensLaser).getPropertyValue("top"));
 
-    const { scaleSize1 } = the;
-    const { scaleSize2 } = the;
+    const { scaleSize1, scaleSize2 } = the;
     const rightEdge = the.windowInWidth - (scaleSize1 * 4) - (scaleSize2 * 98);
     const leftEdge = scaleSize2 * 2;
     const bottomEdge = the.spaceAttackHeight;

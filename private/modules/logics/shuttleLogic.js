@@ -3,8 +3,7 @@ function shuttleLogic() {
     position.shuttleAxisX = parseInt(window.getComputedStyle(element.shuttle).getPropertyValue("left"));
     position.shuttleLaserAxisY = parseInt(window.getComputedStyle(element.shuttleLaser).getPropertyValue("top"));
 
-    const { scaleSize1 } = the;
-    const { scaleSize2 } = the;
+    const { scaleSize1, scaleSize2 } = the;
     const rightStep = position.shuttleAxisX + (scaleSize2 / 2);
     const leftStep = position.shuttleAxisX - (scaleSize2 / 2);
     const upStep = position.shuttleLaserAxisY - scaleSize2;

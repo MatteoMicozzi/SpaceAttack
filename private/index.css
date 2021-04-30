@@ -15,6 +15,7 @@
   font-size: 50px;
   color: red;
   animation: title 10s linear infinite;
+  z-index: 5;
 }
 @keyframes title {
   0%{left: 0px;}
@@ -26,6 +27,7 @@
 a {
   text-decoration: none;
   animation: a 1s linear infinite;
+  z-index: 5;
 }
 @keyframes a {
   0%{color: green;}
@@ -37,7 +39,6 @@ a:hover {
   color: yellow;
   animation: 0s;
 }
-
 .menu {
   position: absolute;
   background-color: black;
