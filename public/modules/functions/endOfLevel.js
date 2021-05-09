@@ -24,11 +24,14 @@ function resettingElements() {
 }
 
 function endOfLevel(status) {
-  onPlayPause();
-  endingAs(status);
-  resettingElements();
-  setTimeout(function () {
-    element.centerTxt.classList.remove("anim_endOfLevel", "anim_centerText");
-    if (status == "NEXT LEVEL") { onPlayPause() };
-  }, 3000);
+  if (!inGame.isNot) {
+    inGame.isNot = true;
+    onPlayPause();
+    endingAs(status);
+    resettingElements();
+    setTimeout(function () {
+      element.centerTxt.classList.remove("anim_endOfLevel", "anim_centerText");
+      if (status == "NEXT LEVEL") { onPlayPause() };
+    }, 3000);
+  };
 };

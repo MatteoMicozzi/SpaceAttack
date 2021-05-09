@@ -5,6 +5,11 @@
   color: limegreen;
   font-family: 'Press Start 2P', cursive;
   overflow: hidden;
+  font-size: 2vmin;
+}
+a {
+  text-decoration: none;
+  color: inherit;
 }
 .menu {
   position: absolute;
@@ -15,12 +20,22 @@
   position: absolute;
   width: 100%;
   text-align: center;
+  top: 1vmin;
+  font-size: 3em;
 }
-.startPause {
+.buttons {
   position: absolute;
+  right: 0;
   width: 100%;
-  text-align: center;
+  top: 7vmin;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: space-between;
+}
+.goBack, .startPause {
   cursor: pointer;
+  margin-left: 8vw;
+  margin-right: 8vw;
 }
 
 .spaceAttack {
@@ -29,16 +44,60 @@
   height: 700px;
   background-image: url("./img/background.jpg");
 }
+.infoControls {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  z-index: 10;
+}
+.controlsViewTransparency {
+  color: transparent;
+  background-color: rgba(0,0,0,0);
+}
+.topTop {
+  position: absolute;
+  margin-top: 1em;
+  width: 100%;
+  font-size: 2.5em;
+  text-align: center;
+}
+.center {
+  position: absolute;
+  top: 39vh;
+  width: 100%;
+  font-size: 3em;
+  text-align: center;
+}
+.topLeft, .topRight, .bottomLeft, .bottomRight {
+  position: absolute;
+  width: 40vw;
+  height: 25vh;
+}
+.topRight, .bottomRight {
+  left: 49vw;
+}
+.bottomLeft, .bottomRight {
+  top: 40vh;
+}
+.topLeft div, .topRight div, .bottomLeft div, .bottomRight div {
+  position: absolute;
+  top: 20vh;
+  left: 10vw;
+  line-height: 1.5em;
+  color: inherit;
+}
 
 .touchFire, .touchMove, .touchStartPause, .touchQuit {
   position: absolute;
   touch-action: none;
-  z-index: 10;
+  z-index: 20;
 }
 
-.shellGameTopTxt {
+.gameTopTxtShell {
   position: absolute;
   width: 100%;
+  top: 2vmin;
 }
 .gameTopTxt {
   position: absolute;
@@ -79,6 +138,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  font-size: 6em;
   color: transparent;
 }
 .anim_centerText {
@@ -91,7 +151,7 @@
   100%{color: transparent;}
 }
 .anim_endOfLevel {
-  animation: endOfLevel 3s ease;
+  animation: endOfLevel 2s ease;
 }
 @keyframes endOfLevel {
   0%{color: transparent;}
@@ -241,14 +301,16 @@
 .topCover {
   position: absolute;
   width: 100%;
-  height: 100px;
+  height: 10vh;
+  top: -11vh;
   background-color: black;
   z-index: 9;
 }
 .bottomCover {
   position: absolute;
   width: 100%;
-  height: 400px;
+  height: 10vh;
+  bottom: -11vh;
   background-color: black;
   z-index: 4;
 }

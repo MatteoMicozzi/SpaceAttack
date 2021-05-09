@@ -6,7 +6,7 @@ function aliensLogic() {
     const { scaleSize1, scaleSize2 } = the;
     const rightEdge = the.windowInWidth - (scaleSize1 * 4) - (scaleSize2 * 98);
     const leftEdge = scaleSize2 * 2;
-    const bottomEdge = the.spaceAttackHeight;
+    const bottomEdge = the.spaceAttackHeight - (scaleSize2 * 4);
     const rightStep = position.aliensAxisX + 1;
     const leftStep = position.aliensAxisX - 1;
     const downStep = position.aliensLaserAxisY + (scaleSize2 / 1.5);

@@ -1,28 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-.body {
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
   background-color: black;
   color: limegreen;
-  width: 100%;
+  right: 0;
   font-family: 'Press Start 2P', cursive;
   background-image: url("./img/backgroundHome.jpg");
 }
 .title {
   position: relative;
-  padding: 30px;
-  width: 100%;
+  padding: 4vw;
+  font-size: 4vw;
   text-align: center;
-  font-size: 50px;
   color: red;
   animation: title 10s linear infinite;
   z-index: 5;
 }
 @keyframes title {
-  0%{left: 0px;}
-  25%{left: -100px;}
-  50%{left: 0px;}
-  75%{left: 100px;}
-  100%{left: 0px;}
+  0%{left: 0vw;}
+  25%{left: 4vw;}
+  50%{left: 0vw;}
+  75%{left: -4vw;}
+  100%{left: 0vw;}
 }
 a {
   text-decoration: none;
@@ -39,19 +43,13 @@ a:hover {
   color: yellow;
   animation: 0s;
 }
+.mainText {
+  position: relative;
+  padding: 4vw;
+  font-size: 2vw;
+}
 .menu {
   position: absolute;
   background-color: black;
   z-index: 10;
-}
-.mainText {
-  position: relative;
-  padding: 25px;
-  font-size: 25px;
-}
-.startPause {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  cursor: pointer;
 }
