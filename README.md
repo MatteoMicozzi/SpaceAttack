@@ -3,10 +3,9 @@
 ##### Screen Game Play  
 
 
-![Screen_game_Play](./ScreeGame.png)  
+![Screen_game](./ScreenGame.png)  
 
-
-**Here to go to the game [SPACE ATTACK!](https://matteo-games.web.app/spaceAttack!.html)**
+*Here to go to the game [SPACE ATTACK!](https://matteo-games.web.app/spaceAttack!.html)*
 
 
 ##### This is a web based arcade game like SPACE INVADERS.
