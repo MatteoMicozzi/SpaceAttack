@@ -2,33 +2,33 @@
   background-color: black;
   color: limegreen;
   font-family: 'Press Start 2P', cursive;
-  overflow: hidden;
   font-size: 2vmin;
+  overflow: hidden;
 }
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 .menu {
-  position: absolute;
   background-color: black;
+  position: absolute;
   z-index: 10;
 }
 .title {
+  font-size: 3em;
   position: absolute;
-  width: 100%;
   text-align: center;
   top: 1vmin;
-  font-size: 3em;
+  width: 100%;
 }
 .buttons {
+  display: flex;
+  font-size: 1.5em;
+  justify-content: space-between;
   position: absolute;
   right: 0;
-  width: 100%;
   top: 7vmin;
-  font-size: 1.5em;
-  display: flex;
-  justify-content: space-between;
+  width: 100%;
 }
 .goBack, .startPause {
   cursor: pointer;
@@ -37,39 +37,41 @@ a {
 }
 
 .spaceAttack {
-  position: absolute;
   background-image: url("./img/background.jpg");
+  position: absolute;
 }
 .infoControls {
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.8);
+  height: 100%;
   position: absolute;
   width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.8);
   z-index: 10;
 }
 .controlsViewTransparency {
-  color: transparent;
+  background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0);
+  color: transparent;
 }
 .topTop {
-  position: absolute;
-  margin-top: 1em;
-  width: 100%;
   font-size: 2.5em;
+  margin-top: 1em;
+  position: absolute;
   text-align: center;
+  width: 100%;
 }
 .center {
+  align-items: center;
+  font-size: 3em;
   position: absolute;
+  text-align: center;
   top: 45%;
   width: 100%;
-  font-size: 3em;
-  align-items: center;
-  text-align: center;
 }
 .topLeft, .topRight, .bottomLeft, .bottomRight {
+  height: 25vh;
   position: absolute;
   width: 40vw;
-  height: 25vh;
 }
 .topRight, .bottomRight {
   left: 49vw;
@@ -78,11 +80,11 @@ a {
   top: 40vh;
 }
 .topLeft div, .topRight div, .bottomLeft div, .bottomRight div {
-  position: absolute;
-  top: 60%;
+  color: inherit;
   left: 10vw;
   line-height: 1.5em;
-  color: inherit;
+  position: absolute;
+  top: 60%;
 }
 
 .touchFire, .touchMove, .touchStartPause, .touchQuit {
@@ -93,13 +95,13 @@ a {
 
 .gameTopTxtShell {
   position: absolute;
-  width: 100%;
   top: 2vmin;
+  width: 100%;
 }
 .gameTopTxt {
+  color: transparent;
   position: absolute;
   width: 100%;
-  color: transparent;
   z-index: 8;
 }
 .anim_gameTopTxt {
@@ -107,36 +109,36 @@ a {
   animation-fill-mode: forwards;
 }
 @keyframes gameTopTxt {
-  0%{top: -300px; color: transparent;}
-  80%{top: -300px; color: inherit;}
-  100%{top: 0px; color: inherit;}
+  0%{color: transparent; top: -300px;}
+  80%{color: inherit; top: -300px;}
+  100%{color: inherit; top: 0;}
 }
 .livesTxt {
-  position: absolute;
   left: 20px;
+  position: absolute;
 }
 .levelTxt {
   position: absolute;
-  width: 100%;
   text-align: center;
+  width: 100%;
 }
 .scoreTxt {
   position: absolute;
-  width: 100%;
-  text-align: right;
   right: 20px;
+  text-align: right;
+  width: 100%;
 }
 
 .centerText {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-  font-size: 6em;
   color: transparent;
+  display: flex;
+  font-size: 6em;
+  height: 100%;
+  justify-content: center;
+  position: absolute;
+  text-align: center;
+  width: 100%;
 }
 .anim_centerText {
   animation: centerText 2s ease;
@@ -162,32 +164,32 @@ a {
   width: 100%;
 }
 .shuttle {
-  position: absolute;
   background-size: contain;
+  position: absolute;
   z-index: 3;
 }
 .anim_shuttle {
-  background-image: url("./img/shuttle.tiff");
   animation: shuttle 3.5s ease-out;
+  background-image: url("./img/shuttle.tiff");
 }
 @keyframes shuttle {
   0%{top: 200px;}
   90%{top: 200px;}
-  100%{top: 0px;}
+  100%{top: 0;}
 }
 .shuttleLaser {
-  position: absolute;
   background-size: contain;
   left: 1px;
+  position: absolute;
   z-index: 1;
 }
 .anim_shuttleLaser {
   background-image: url("./img/blueLaser.tiff");
 }
 .aliensLaser {
-  position: absolute;
   background-size: contain;
   left: 1px;
+  position: absolute;
   top: 1px;
   z-index: 1;
 }
@@ -203,26 +205,26 @@ a {
   position: absolute;
 }
 .s1Part1, .s1Part2, .s1Part3, .s2Part1, .s2Part2, .s2Part3, .s3Part1, .s3Part2, .s3Part3 {
-  position: absolute;
   background-size: contain;
+  position: absolute;
   z-index: 2;
 }
 .anim_shieldP1 {
-  background-image: url("./img/sp1.tiff");
   animation: shield 2s ease-out;
+  background-image: url("./img/sp1.tiff");
 }
 .anim_shieldP2 {
-  background-image: url("./img/sp2.tiff");
   animation: shield 3s ease-out;
+  background-image: url("./img/sp2.tiff");
 }
 .anim_shieldP3 {
-  background-image: url("./img/sp3.tiff");
   animation: shield 2.5s ease-out;
+  background-image: url("./img/sp3.tiff");
 }
 @keyframes shield {
   0%{top: 160px;}
   70%{top: 160px;}
-  100%{top: 0px;}
+  100%{top: 0;}
 }
 
 
@@ -233,39 +235,39 @@ a {
   position: absolute;
 }
 .part1, .part2, .part3, .part4, .part5, .part6, .part7, .part8, .part9, .part10 {
-  position: absolute;
   background-size: contain;
+  position: absolute;
   z-index: 2;
 }
 .anim_alienShip {
-  background-image: url("./img/alienShip2.tiff");
   animation: alienShipBack 1.2s ease-out;
+  background-image: url("./img/alienShip2_1.tiff");
 }
 .anim_alienShip1 {
-  background-image: url("./img/alienShip2.tiff");
   animation: alienShip 4.2s ease-out;
+  background-image: url("./img/alienShip2_2.tiff");
 }
 .anim_alienShip2 {
-  background-image: url("./img/alienShip2.tiff");
   animation: alienShip 4.5s ease-out;
+  background-image: url("./img/alienShip2_3.tiff");
 }
 .anim_alienShip3 {
-  background-image: url("./img/alienShip2.tiff");
   animation: alienShip 4.6s ease-out;
+  background-image: url("./img/alienShip2_4.tiff");
 }
 .anim_alienShip4 {
-  background-image: url("./img/alienShip2.tiff");
   animation: alienShip 4.7s ease-out;
+  background-image: url("./img/alienShip2_5.tiff");
 }
 @keyframes alienShipBack {
   0%{top: -300px;}
   70%{top: -300px;}
-  100%{top: 0px;}
+  100%{top: 0;}
 }
 @keyframes alienShip {
   0%{top: -300px;}
   94%{top: -300px;}
-  100%{top: 0px;}
+  100%{top: 0;}
 }
 .part2 {
   left: 100px;
@@ -296,18 +298,18 @@ a {
 }
 
 .topCover {
-  position: absolute;
-  width: 100%;
-  height: 10vh;
-  top: -10.9vh;
   background-color: black;
+  height: 10vh;
+  position: absolute;
+  top: -10.9vh;
+  width: 100%;
   z-index: 9;
 }
 .bottomCover {
+  background-color: black;
+  bottom: -10.9vh;
+  height: 10vh;
   position: absolute;
   width: 100%;
-  height: 10vh;
-  bottom: -10.9vh;
-  background-color: black;
   z-index: 4;
 }
