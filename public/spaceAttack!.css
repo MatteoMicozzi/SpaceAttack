@@ -170,7 +170,7 @@ a {
 }
 .anim_shuttle {
   animation: shuttle 3.5s ease-out;
-  background-image: url("./img/shuttle.tiff");
+  background-image: url("./img/shuttle.png");
 }
 @keyframes shuttle {
   0%{top: 200px;}
@@ -184,7 +184,7 @@ a {
   z-index: 1;
 }
 .anim_shuttleLaser {
-  background-image: url("./img/blueLaser.tiff");
+  background-image: url("./img/blueLaser.png");
 }
 .aliensLaser {
   background-size: contain;
@@ -194,7 +194,7 @@ a {
   z-index: 1;
 }
 .anim_aliensLaser {
-  background-image: url("./img/redLaser.tiff");
+  background-image: url("./img/redLaser.png");
 }
 
 .shields {
@@ -211,15 +211,15 @@ a {
 }
 .anim_shieldP1 {
   animation: shield 2s ease-out;
-  background-image: url("./img/sp1.tiff");
+  background-image: url("./img/sp1.png");
 }
 .anim_shieldP2 {
   animation: shield 3s ease-out;
-  background-image: url("./img/sp2.tiff");
+  background-image: url("./img/sp2.png");
 }
 .anim_shieldP3 {
   animation: shield 2.5s ease-out;
-  background-image: url("./img/sp3.tiff");
+  background-image: url("./img/sp3.png");
 }
 @keyframes shield {
   0%{top: 160px;}
@@ -241,23 +241,23 @@ a {
 }
 .anim_alienShip {
   animation: alienShipBack 1.2s ease-out;
-  background-image: url("./img/alienShip2_1.tiff");
+  background-image: url("./img/alienShip2_1.png");
 }
 .anim_alienShip1 {
   animation: alienShip 4.2s ease-out;
-  background-image: url("./img/alienShip2_2.tiff");
+  background-image: url("./img/alienShip2_2.png");
 }
 .anim_alienShip2 {
   animation: alienShip 4.5s ease-out;
-  background-image: url("./img/alienShip2_3.tiff");
+  background-image: url("./img/alienShip2_3.png");
 }
 .anim_alienShip3 {
   animation: alienShip 4.6s ease-out;
-  background-image: url("./img/alienShip2_4.tiff");
+  background-image: url("./img/alienShip2_4.png");
 }
 .anim_alienShip4 {
   animation: alienShip 4.7s ease-out;
-  background-image: url("./img/alienShip2_5.tiff");
+  background-image: url("./img/alienShip2_5.png");
 }
 @keyframes alienShipBack {
   0%{top: -300px;}
