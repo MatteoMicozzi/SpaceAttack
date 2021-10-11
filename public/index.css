@@ -1,34 +1,33 @@
 html, body {
-  width: 100%;
   overflow-x: hidden;
+  width: 100%;
 }
-
 body {
   background-color: black;
-  color: limegreen;
-  right: 0;
-  font-family: 'Press Start 2P', cursive;
   background-image: url("./img/backgroundHome.jpg");
+  color: limegreen;
+  font-family: 'Press Start 2P', cursive;
+  right: 0;
 }
 .title {
-  position: relative;
-  padding: 4vw;
-  font-size: 4vw;
-  text-align: center;
-  color: red;
   animation: title 10s linear infinite;
+  color: red;
+  font-size: 4vw;
+  padding: 4vw;
+  position: relative;
+  text-align: center;
   z-index: 5;
 }
 @keyframes title {
-  0%{left: 0vw;}
+  0%{left: 0;}
   25%{left: 4vw;}
-  50%{left: 0vw;}
+  50%{left: 0;}
   75%{left: -4vw;}
-  100%{left: 0vw;}
+  100%{left: 0;}
 }
 a {
-  text-decoration: none;
   animation: a 1s linear infinite;
+  text-decoration: none;
   z-index: 5;
 }
 @keyframes a {
@@ -37,17 +36,17 @@ a {
   100%{color: green;}
 }
 a:hover {
-  text-decoration: none;
-  color: yellow;
   animation: 0s;
+  color: yellow;
+  text-decoration: none;
 }
 .mainText {
-  position: relative;
-  padding: 4vw;
   font-size: 2vw;
+  padding: 4vw;
+  position: relative;
 }
 .menu {
-  position: absolute;
   background-color: black;
+  position: absolute;
   z-index: 10;
 }
