@@ -27,8 +27,8 @@ function endOfLevel(status) {
   if (!inGame.isNot) {
     inGame.isNot = true;
     onPlayPause();
-    endingAs(status);
     resettingElements();
+    endingAs(status);
     setTimeout(function () {
       element.centerTxt.classList.remove("anim_endOfLevel", "anim_centerText");
       if (status == "NEXT LEVEL") { onPlayPause() };
