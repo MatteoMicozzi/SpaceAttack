@@ -41,17 +41,17 @@ a {
   position: absolute;
 }
 .infoControls {
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.8);
+  background-color: black;
   height: 100%;
+  opacity: 0.8;
   position: absolute;
   width: 100%;
   z-index: 10;
 }
 .controlsViewTransparency {
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0);
+  background-color: black;
   color: transparent;
+  opacity: 0;
 }
 .topTop {
   font-size: 2.5em;
