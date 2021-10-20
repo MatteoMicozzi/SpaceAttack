@@ -62,9 +62,23 @@ a:hover {
   position: absolute;
   z-index: 10;
 }
+@media(max-width: 950px) {
+  .title {
+    font-size: 2.5em;
+  }
+  .about {
+    font-size: 1.1em;
+  }
+  .mainText {
+    font-size: 1.6em;
+  }
+  a {
+    font-size: 1em;
+  }
+}
 @media(max-width: 550px) {
   .title {
-    font-size: 1.4em;
+    font-size: 1.8em;
   }
   .about {
     font-size: 1.2em;
@@ -73,6 +87,6 @@ a:hover {
     font-size: 1.1em;
   }
   a {
-    font-size: 0.8em;
+    font-size: 1em;
   }
 }
