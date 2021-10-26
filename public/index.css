@@ -1,23 +1,23 @@
-html, body {
-  width: 100%;
+body, html {
   height: 100%;
+  width: 100%;
 }
 body {
   background-color: black;
   background-image: url("./img/backgroundHome.jpg");
   color: limegreen;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 .title {
-  position: relative;
-  padding: 5%;
+  animation: title 10s linear infinite;
+  color: red;
   display: inline-block;
   font-family: 'Press Start 2P', monospace;
   font-size: 3.5em;
-  color: red;
+  padding: 5%;
+  position: relative;
   z-index: 5;
-  animation: title 10s linear infinite;
 }
 @keyframes title {
   0%{left: 2%;}
@@ -28,11 +28,11 @@ h2 {
   font-size: 1.2em;
 }
 .mainText {
-  position: relative;
-  margin: -2% 5%;
   font-family: courier, monospace;
   font-size: 2em;
   line-height: 0.9em;
+  margin: -2% 5%;
+  position: relative;
 }
 p, li {
   font-size: 0.7em;
